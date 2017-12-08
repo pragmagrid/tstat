@@ -1,0 +1,6 @@
+ROLLNAME	= tstat
+VERSION		= 3.1.1
+RELEASE		= 0
+COLOR		= palegreen
+
+REDHAT.ROOT	= $(CURDIR)

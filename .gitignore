@@ -1,0 +1,29 @@
+# build directory
+RPMS/
+SOURCES/
+BUILD/
+SPECS/
+disk*/
+*.iso
+
+_os
+_arch
+_distribution
+.rpmmacros
+
+# ignore version, rules  files
+python.mk
+Rules-*.mk
+Rules.mk
+Rolls.mk
+roll*.mk
+rocks-*.mk
+roll-tstat.*
+
+# ignore large src files
+src/tstat/*.gz
+
+# ignore doc files extracted from tar file
+src/guide/HOWTO.*
+src/guide/tstat_*.png
+

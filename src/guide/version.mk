@@ -1,0 +1,5 @@
+ROLL	= tstat
+NAME	= roll-$(ROLL)-usersguide
+VERSION = 3.1.1
+RELEASE	= 0
+RPM.ARCH = noarch
