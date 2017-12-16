@@ -13,6 +13,15 @@ Downloads
 
     wget http://tstat.polito.it/download/tstat_rrd.cgi
     wget  http://tstat.polito.it/download/tstat-3.1.1.tar.gz
+    wget http://monalisa.cern.ch/FDT/lib/fdt.jar
+
+
+Links
+---------
+::
+
+    https://github.com/straverso/tstat-post-processing
+
 
 Building
 ---------

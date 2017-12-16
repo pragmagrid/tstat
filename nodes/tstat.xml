@@ -17,6 +17,7 @@
 	</changelog>
 
 	<package>tstat</package>
+	<package>fdt</package>
 	<package>roll-tstat-usersguide</package>
 
 </kickstart>
