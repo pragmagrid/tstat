@@ -1,14 +1,16 @@
 #!/bin/bash
 #
 # fdt-client .sh - script to start client 
-# from fdt web site
+# Adapted from fdt web site
 #
+
+FDTDIR=@PKGROOT@/lib
 
 if [ $# -lt 1 ]; then
     echo "***************************************************"
     echo "************** Parameters needed ******************"
     echo "***************************************************"
-    java -jar fdt.jar -h
+    java -jar $FDTDIR/fdt.jar -h
     exit 0
 fi
 
@@ -24,8 +26,8 @@ if [ "$found" == "false" ]; then
     echo "***************************************************"
     echo "******* Please specify the server address *********"
     echo "***************************************************"
-    java -jar fdt.jar -h    
+    java -jar $FDTDIR/fdt.jar -h    
     exit 0
 fi
 
-java -jar fdt.jar $*
+java -jar $FDTDIR/fdt.jar $*

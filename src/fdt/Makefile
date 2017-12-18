@@ -9,13 +9,22 @@ REDHAT.ROOT = $(CURDIR)/../../
 -include $(ROCKSROOT)/etc/Rules.mk
 include Rules.mk
 
-SCRIPTS = $(NAME)-server.sh $(NAME)-client.sh
+FDTSCRIPTS = $(NAME)-server.sh $(NAME)-client.sh
 
-build::
+SEDSPEC += -e 's%@PKGROOT@%$(PKGROOT)%g' 
+
+%: %.in
+	$(SED) $(SEDSPEC) $^ > $@
+
+.SUFFIXES:
+
+build: $(FDTSCRIPTS)
 	
 install::
 	mkdir -p $(ROOT)/$(PKGROOT)/bin
-	cp  $(NAME).jar $(ROOT)/$(PKGROOT)/bin
-	install -m 755  $(SCRIPTS)  $(ROOT)/$(PKGROOT)/bin
+	mkdir -p $(ROOT)/$(PKGROOT)/lib
+	cp  $(NAME).jar $(ROOT)/$(PKGROOT)/lib
+	install -m 755 $(FDTSCRIPTS) $(ROOT)/$(PKGROOT)/bin
 	
 clean::
+	rm -rf $(FDTSCRIPTS)

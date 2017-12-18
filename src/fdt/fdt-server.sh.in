@@ -1,0 +1,9 @@
+#!/bin/bash
+#
+# fdt-server.sh - script to start server
+# Adapted from fdt web site
+#
+
+FDTDIR=@PKGROOT@/lib
+
+java -jar $FDTDIR/fdt.jar 
