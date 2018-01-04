@@ -23,12 +23,13 @@ Links
 #. `Tstat`_
 #. `Tstat logs post processing`_
 #. `Tstat logs files structure`_
-#. `Fast Data Transfer FDT`_
+#. `Fast Data Transfer - FDT`_
 #. `FDT examples`_
-#. `InfluxData products`_ :
-    #. store data with influxDB
-    #. graph and visualize data with Chronograph 
-    #. use custom logic with Kapacitor
+#. `InfluxData products`_ 
+
+    #. store data with `InfluxDB`_
+    #. graph and visualize data with `Chronograph`_
+    #. use custom logic with `Kapacitor`_
 
 
 Building
@@ -76,9 +77,13 @@ Read the original users guide for inforation on how to create config files and r
    
    tstat -R -l -N l.conf -H histo.conf -i eth5 -s traces2 -r traces2
 
-.. _Tstat : http://tstat.polito.it
-.. _Tstat logs files structure : http://tstat.polito.it/measure.shtml#LOG
-.. _Tstat logs post processing : https://github.com/straverso/tstat-post-processing
-.. _Fast Data Transfer - FDT : http://monalisa.cern.ch/FDT
-.. _FDT examples : http://monalisa.cern.ch/FDT/documentation_examples.html
-.. _InfluxData products : https://www.influxdata.com/products/
+.. _Tstat: http://tstat.polito.it
+.. _Tstat logs files structure: http://tstat.polito.it/measure.shtml#LOG
+.. _Tstat logs post processing: https://github.com/straverso/tstat-post-processing
+.. _Fast Data Transfer - FDT: http://monalisa.cern.ch/FDT
+.. _FDT examples: http://monalisa.cern.ch/FDT/documentation_examples.html
+.. _InfluxData products: https://www.influxdata.com/products/
+.. _InfluxDB: https://www.influxdata.com/time-series-platform/influxdb/
+.. _Chronograph: https://www.influxdata.com/time-series-platform/chronograf/
+.. _Kapacitor: https://docs.influxdata.com/kapacitor/v1.4/introduction/getting_started/
+
