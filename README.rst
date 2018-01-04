@@ -26,7 +26,6 @@ Links
 #. `Fast Data Transfer - FDT`_
 #. `FDT examples`_
 #. `InfluxData products`_ 
-
     #. store data with `InfluxDB`_
     #. graph and visualize data with `Chronograph`_
     #. use custom logic with `Kapacitor`_
