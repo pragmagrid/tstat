@@ -19,9 +19,8 @@ Downloads
 
 Links
 ---------
-::
 
-    https://github.com/straverso/tstat-post-processing
+# `Tstat logs post processing`_
 
 
 Building
@@ -69,3 +68,4 @@ Read the original users guide for inforation on how to create config files and r
    
    tstat -R -l -N l.conf -H histo.conf -i eth5 -s traces2 -r traces2
 
+.. _Tstat logs post processing :  https://github.com/straverso/tstat-post-processing
