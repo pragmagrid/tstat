@@ -14,6 +14,7 @@ Downloads
     wget http://tstat.polito.it/download/tstat_rrd.cgi
     wget  http://tstat.polito.it/download/tstat-3.1.1.tar.gz
     wget http://monalisa.cern.ch/FDT/lib/fdt.jar
+    wget https://dl.influxdata.com/influxdb/releases/influxdb-1.4.2.x86_64.rpm
 
 
 Links
@@ -54,7 +55,6 @@ What is installed:
 #. A usersguide is provided with the distribution and  the files names are modified
    to fit the rocks roll documentation, otherwise all ithe info is intact. 
    Roll usersguide is installed in ``/var/www/html/roll-documentation/tstat``
-
 
 Using
 -------
