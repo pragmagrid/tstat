@@ -15,6 +15,10 @@ Downloads
     wget  http://tstat.polito.it/download/tstat-3.1.1.tar.gz
     wget http://monalisa.cern.ch/FDT/lib/fdt.jar
     wget https://dl.influxdata.com/influxdb/releases/influxdb-1.4.2.x86_64.rpm
+    wget https://dl.influxdata.com/chronograf/releases/chronograf-1.4.0.1.x86_64.rpm
+    wget https://dl.influxdata.com/kapacitor/releases/kapacitor-1.4.0.x86_64.rpm
+    wget https://dl.influxdata.com/telegraf/releases/telegraf-1.5.1-1.x86_64.rpm
+
 
 
 Links
