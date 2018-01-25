@@ -21,7 +21,16 @@
 	<package>kapacitor</package>
 	<package>fdt</package>
 	<package>tstat</package>
-	<package>roll-tstat-usersguide</package>
+	<package>opt-dateutil</package>
+	<package>opt-requests</package>
+	<package>opt-idna</package>
+	<package>opt-influxdb</package>
+	<package>opt-six</package>
+	<package>opt-urllib3</package>
+	<package>opt-certifi</package>
+	<package>opt-chardet</package>
+	<package>opt-pytz</package>
 
+	<package>roll-tstat-usersguide</package>
 
 </kickstart>

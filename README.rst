@@ -12,12 +12,34 @@ Downloads
 ::
 
     wget http://tstat.polito.it/download/tstat_rrd.cgi
-    wget  http://tstat.polito.it/download/tstat-3.1.1.tar.gz
+    wget http://tstat.polito.it/download/tstat-3.1.1.tar.gz
     wget http://monalisa.cern.ch/FDT/lib/fdt.jar
     wget https://dl.influxdata.com/influxdb/releases/influxdb-1.4.2.x86_64.rpm
     wget https://dl.influxdata.com/chronograf/releases/chronograf-1.4.0.1.x86_64.rpm
     wget https://dl.influxdata.com/kapacitor/releases/kapacitor-1.4.0.x86_64.rpm
     wget https://dl.influxdata.com/telegraf/releases/telegraf-1.5.1-1.x86_64.rpm
+
+Github repo for a python client for influxdb ias available at `influxdb-python`_.
+Get latest release v.5.0.0 (as of Jan 2018) ::
+
+    wget https://github.com/influxdata/influxdb-python/archive/v5.0.0.tar.gz
+
+influxdb-python dependencies ::
+
+    for influxdb 
+        pytz: https://pypi.python.org/pypi/pytz
+        dateutil: https://pypi.python.org/pypi/python-dateutil
+        requests: wget https://github.com/requests/requests/archive/v2.18.4.tar.gz
+
+    for requests: 
+        urllib3: https://pypi.python.org/pypi/urllib3
+        chardet: https://pypi.python.org/pypi/chardet
+        certifi: https://pypi.python.org/pypi/certifi
+        idna: https://pypi.python.org/pypi/certifi
+
+
+NOTE: influxdb-python may not work with influxdb RPM version 1.4.2 but is stateds to work with 
+version  1.2.4. Both RPMs are available in the roll.
 
 
 
@@ -90,4 +112,4 @@ Read the original users guide for inforation on how to create config files and r
 .. _InfluxDB : https://www.influxdata.com/time-series-platform/influxdb/
 .. _Chronograph : https://www.influxdata.com/time-series-platform/chronograf/
 .. _Kapacitor : https://docs.influxdata.com/kapacitor/v1.4/introduction/getting_started/
-
+.. _influxdb-python : https://github.com/influxdata/influxdb-python

@@ -21,9 +21,10 @@ rocks-*.mk
 roll-tstat.*
 
 # ignore large src files
-src/tstat/*.gz
+src/*/*.gz
+src/*/*.zip
 
 # ignore doc files extracted from tar file
 src/guide/HOWTO.*
 src/guide/tstat_*.png
-
+src/influxdata/*rpm

@@ -1,3 +1,16 @@
 00b76b2a075065c3680050ca74aa2d58d4951c4b  src/tstat/tstat-3.1.1.tar.gz 1Uh6JBCrb6FEv_XxcXOErOMURiDNBTmJy
 11ecd048b8ea18e9e6dc17517c237c3501ea33e5  src/fdt/fdt.jar 1qV_4NbECkbFrZlGYqt1hONvENpScnzPO
-a2a231ce03e4783901183cb35665e51d0ad448fe  src/RPMS/influxdb-1.4.2-1.x86_64.rpm 1CmenlJiU8h1UX5qQXwnUgUV7h_nuLuSe
+e8858be18aacd1db8bf1982709e003905f2fc3a8  src/influxdata/influxdb-1.2.4-1.x86_64.rpm 1ZlBUQnaEUFL3pOT8knLUTmbyenphqSxB
+a2a231ce03e4783901183cb35665e51d0ad448fe  src/influxdata/influxdb-1.4.2-1.x86_64.rpm 1CmenlJiU8h1UX5qQXwnUgUV7h_nuLuSe 
+be467146fecb7278c516e67faa7a4b3d8ad36354  src/influxdata/chronograf-1.4.0.1-1.x86_64.rpm 1jYysCrF7-Q1yNs3SU5Z71Vtsf9OmgO4G 
+1b102f15a1a7831cd8aa645bf9b3a95fa3e1f015  src/influxdata/kapacitor-1.4.0-1.x86_64.rpm 1beLbk9tRRzW3LDigNE_BHeJwQ7PKIBYc
+b6f851339511c7d9fa75ea8c68cd703213db2ba8  src/influxdata/telegraf-1.5.1-1.x86_64.rpm 1vghh9PdGI8MQpp-QHH6bAiJ_nIjszlPI
+ec6518531fc22e7ba5d25959fa315c3eb5c4c862  src/python-certifi/certifi-2018.1.18.tar.gz 1xw9LO3Vp71Wwub1IOLtZdzAXSmky05l6
+4766fb07e700945a7085d073257f1f320d037ce8  src/python-chardet/chardet-3.0.4.tar.gz 1Saokt_39ZmGiPGhR3flkdiSaoGHrWyHV
+db2ace298dee7e47fd720ed03eb790885347bf4e  src/python-dateutil/python-dateutil-2.6.1.tar.gz 14aJRvzXZ9rbXJZzHVMj5_RdSqyL0fw_u
+abf5e2e7d8f52dd00e658f1ead4eb9f4d2240bf4  src/python-idna/idna-2.6.tar.gz 1PWhWL3XhciL_4wG4ULR_h4XaGXaK_rV1
+b773ba061d8df7e9c797813871e3fe4e6b1dc1ac  src/python-influxdb/influxdb-python-5.0.0.tar.gz 19LG1vH8lwO-SQZgycxBNmS50adRx2CSt
+c503cf6df6d98f975ca71dbb4f7c635a6d8c9ab6  src/python-requests/requests-2.18.4.tar.gz 1IuZ3SZLRSIghYivwE53iiMSuzcspC0fb 
+3647372a0e104e7b53bd477762392024e1083ac0  src/python-six/six-1.11.0.tar.gz 1iva_O3OVoyaAkJqzo86uSnhGwGeqZsiz
+02c623c3bdceda4ef5bffdafdda472d2d9e34ef1  src/python-urllib3/urllib3-1.22.tar.gz 12-j428RDeNJdyYxCxgE__sPbbRkN5kti
+505c04511467366cd3c1c1daa73d3fdc93966f7e  src/python-pytz/pytz-2017.3.zip 14HfNQYDH3VX_knOCyS8aLeglMpNzOr_K
