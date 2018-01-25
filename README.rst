@@ -103,6 +103,11 @@ Read the original users guide for inforation on how to create config files and r
    
    tstat -R -l -N l.conf -H histo.conf -i eth5 -s traces2 -r traces2
 
+Using Chronograf
+-------------------
+
+See `Influxdata chronograf docs`_
+
 .. _Tstat : http://tstat.polito.it
 .. _Tstat logs files structure: http://tstat.polito.it/measure.shtml#LOG
 .. _Tstat logs post processing: https://github.com/straverso/tstat-post-processing
@@ -113,3 +118,4 @@ Read the original users guide for inforation on how to create config files and r
 .. _Chronograph : https://www.influxdata.com/time-series-platform/chronograf/
 .. _Kapacitor : https://docs.influxdata.com/kapacitor/v1.4/introduction/getting_started/
 .. _influxdb-python : https://github.com/influxdata/influxdb-python
+.. _Influxdata chronograf docs : https://docs.influxdata.com/chronograf/v1.4/introduction/getting-started/
