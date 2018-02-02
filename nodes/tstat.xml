@@ -21,7 +21,6 @@
 	<package>kapacitor</package>
 	<package>fdt</package>
 	<package>tstat</package>
-	<package>opt-dateutil</package>
 	<package>opt-requests</package>
 	<package>opt-idna</package>
 	<package>opt-influxdb</package>
