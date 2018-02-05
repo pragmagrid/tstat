@@ -13,3 +13,8 @@ Start Chronograph
 ## Tests
 
 Run.py is the main file, verified working in local machine
+
+
+## Config.py
+
+Just for an example.
