@@ -108,6 +108,10 @@ Using Chronograf
 
 See `Influxdata chronograf docs`_
 
+#. to create new canned measurent layout use `new_apps.sh`_ 
+
+.. _new_apps.sh : https://github.com/influxdata/chronograf/blob/master/canned/new_apps.sh
+
 .. _Tstat : http://tstat.polito.it
 .. _Tstat logs files structure: http://tstat.polito.it/measure.shtml#LOG
 .. _Tstat logs post processing: https://github.com/straverso/tstat-post-processing
