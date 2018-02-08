@@ -110,6 +110,13 @@ See `Influxdata chronograf docs`_
 
 #. to create new canned measurent layout use `new_apps.sh`_  See info in https://github.com/influxdata/chronograf/blob/master/canned/README.md
 
+#. export dashboards  (from google search results) ::
+
+    SRC=http://your-src-server:8888/chronograf/v1/dashboards
+    DST=http://your-dst-server:8888/chronograf/v1/dashboards
+    curl -Ss $SRC|jq -r '.dashboards[]|@json' |while IFS= read -r dashboard; \
+        do echo $dashboard > f; curl -X POST -H "Accept: application/json" -d @f $DST; done
+        
 .. _new_apps.sh : https://github.com/influxdata/chronograf/blob/master/canned/new_apps.sh
 
 .. _Tstat : http://tstat.polito.it
@@ -124,4 +131,3 @@ See `Influxdata chronograf docs`_
 .. _influxdb-python : https://github.com/influxdata/influxdb-python
 .. _Influxdata chronograf docs : https://docs.influxdata.com/chronograf/v1.4/introduction/getting-started/
 
-test
