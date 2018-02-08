@@ -108,7 +108,7 @@ Using Chronograf
 
 See `Influxdata chronograf docs`_
 
-#. to create new canned measurent layout use `new_apps.sh`_ 
+#. to create new canned measurent layout use `new_apps.sh`_  See info in https://github.com/influxdata/chronograf/blob/master/canned/README.md
 
 .. _new_apps.sh : https://github.com/influxdata/chronograf/blob/master/canned/new_apps.sh
 
