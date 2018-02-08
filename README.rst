@@ -116,7 +116,12 @@ See `Influxdata chronograf docs`_
     DST=http://your-dst-server:8888/chronograf/v1/dashboards
     curl -Ss $SRC|jq -r '.dashboards[]|@json' |while IFS= read -r dashboard; \
         do echo $dashboard > f; curl -X POST -H "Accept: application/json" -d @f $DST; done
-        
+ 
+#. the server's REST API documentation is in swagger as a swagger.json file that is 
+   at server's "/docs" endpoint   http://$server:$port/docs
+   
+#. see all API endpoints at http://$server:$port/chronograf/v1/  
+
 .. _new_apps.sh : https://github.com/influxdata/chronograf/blob/master/canned/new_apps.sh
 
 .. _Tstat : http://tstat.polito.it
