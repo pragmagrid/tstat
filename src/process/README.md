@@ -1,20 +1,30 @@
 ## Local Env
 
-Python 2.7
-Pip 2
-Influxdb up to date
-Chronograph up to date
+#Python 2.7
+
+#InfluxDB 1.4
+
+For influxDB 8086 port used
+
+#Chronograph 1.4
+
+Instead of 8888 which is default, 8080 port has been used
 
 ## Setup
 
-Start Influxdb
-Start Chronograph
+#Start InfluxDB
 
-## Tests
+/etc/rc.d/init.d/influxdb start
 
-Run.py is the main file, verified working in local machine
+#Start Chronograph
+
+/etc/rc.d/init.d/chronograf start
+
+## Run
+
+./run.py
 
 
-## Config.py
+## Configuration for other env
 
-Just for an example.
+Give change to a config.py file
