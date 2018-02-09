@@ -1,6 +1,6 @@
-##2018 FEB WEEK 01
+## 2018 FEB WEEK 01
 
-####Updated
+#### Updated
 
 - Implemented all the codes from local to the server
 
@@ -18,7 +18,7 @@
 
 >Updates on README.md file
 
-####Will be Updated
+#### Will be Updated
 
 - Parsing speed needs to be faster
 
