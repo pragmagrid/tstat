@@ -1,7 +1,7 @@
 # -*- coding: utf-8 -*-
 
 import config
-from datetime import datetime
+import time
 from influxdb import InfluxDBClient
 
 
@@ -12,21 +12,20 @@ class database():
         self.host = host
         self.port = port
 
-    def insert(self, jsons):
+    def insert(self, jsons, epoch):
         """Instantiate a connection to the InfluxDB.
         """
         user = config.CONFIG['id']
         password = config.CONFIG['password']
         dbname = config.CONFIG['dbname']
-        # query = 'select value from log_tcp_complete;'
-        current_time = datetime.utcnow().strftime('%Y-%m-%dT%H:%M:%SZ')
+	timestamp = time.strftime('%Y-%m-%dT%H:%M:%SZ', time.localtime(epoch))
         json_body = [
             {
                 "measurement": "log_tcp_complete",
                 "tags": {
                     "host": config.CONFIG['hostname']
                 },
-                "time": current_time,
+                "time": timestamp,
                 "fields": {
                 }
             }
@@ -42,7 +41,3 @@ class database():
         print("Write points: {0}".format(json_body))
         client.write_points(json_body)
 
-        # print("Querying data: " + query)
-        # result = client.query(query)
-
-        # print("Result: {0}".format(result))

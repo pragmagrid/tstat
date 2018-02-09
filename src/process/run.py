@@ -1,16 +1,15 @@
-#!/usr/local/bin/python2.7
+#!/opt/python/bin/python2.7
 
 import os
-import log_tcp_complete_parts as tstat
-# import process as database
+import log_tcp_complete as tstat
 from process import database
 import config
+import time
 
 class run:
 
     def fileread(self,filename):
         f = open(filename)
-        #f = open (os.path.expanduser("~/2018_01_11_14_48.out/log_tcp_complete"))
         line = f.readline()
         if line.startswith("#"):
             #first line in the tstat tcp complete is not an actual data, it is just a header information.
@@ -19,31 +18,35 @@ class run:
             while len(line.strip()) > 0:
 
                 record = tstat.tstatrecord(line)
-                if record.err is not True:
-                    run.interact(self,record)
-                    line = f.readline()
-                else:
-                    print("1")
-                    break;
 
-        # record = tstat.tstatrecord(line)
+                if record.err is not True:
+                    epoch = record.timestamp
+                    if run.time_constraint(self, epoch) is True:
+                        run.interact(self, record, epoch)
+                    else:
+                        print("time out")
+                else:
+                    print("error")
+
+                line = f.readline()
         f.close()
-        # run.interact(self,record)
         print("END")
 
 
-    def interact(self,record):
-        record = record.__dict__
-        # print(record)
-        # json_record = json.dumps(record.__dict__)
-        # print(json_record)
-        db = database(config.CONFIG['host'],8086)
-        # db = database('localhost',8086)
-        db.insert(record)
+    def interact(self,record,epoch):
+       	record = record.__dict__
+       	db = database(config.CONFIG['host'],config.CONFIG['port'])
+       	db.insert(record,epoch)
+
+    def time_constraint(self, epoch):
+        current_time = float(time.time())
+        if(current_time - epoch) <= config.CONFIG['time_constraint']:
+            return True
+        else:
+            return False
 
 def searchfile():
         path = os.path.expanduser(config.CONFIG['path'])
-        # path = os.path.expanduser("~/PRAGMA")
         for root, dirs, files in os.walk(path):
             for dirname in dirs:
                 ext = os.path.splitext(dirname)[1]
@@ -64,3 +67,4 @@ def searchfile():
 
 
 searchfile()
+
