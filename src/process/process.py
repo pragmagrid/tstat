@@ -7,6 +7,8 @@ from influxdb import InfluxDBClient
 
 class database():
     """database"""
+	
+    is_exist = False
 
     def __init__(self, host, port):
         self.host = host
@@ -35,9 +37,23 @@ class database():
 
         client = InfluxDBClient(self.host, self.port, user, password, dbname)
 
-        print("Create database: " + dbname)
-        client.create_database(dbname)
+	dblist = client.get_list_database()
+	#list of DB already created
+        self.is_exist = self.search_dictionaries('name', dbname, dblist)	
+
+	#minimize the number of create_db func called
+        if self.is_exist:
+            print('exists')
+        else:
+            client.create_database(dbname)
 
         print("Write points: {0}".format(json_body))
         client.write_points(json_body)
 
+
+    def search_dictionaries(self, key, value, list_of_dictionaries):
+        result = [element for element in list_of_dictionaries if element[key] == value]
+        if not result:
+            return False
+        else:
+            return True

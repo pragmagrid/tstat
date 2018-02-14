@@ -34,3 +34,9 @@ To Change chronograf port number, unfortunately there is no external config file
 Therefore set env PORT = 'whatever port number' or set the switch --port 'whatever port number'.
 
 Anything else except chronograph port, make change in config.py.
+
+## Naming Schema
+
+Prefer to be specific and meaningful name for variable and functions.
+
+If there are more than a word, naming will be word1_word2.

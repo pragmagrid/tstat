@@ -7,6 +7,7 @@ class tstatrecord:
 
         #Flag to detect error
         self.err = False
+	self.err_code = 0	
 
         if len(t) < 130:
             self.err = True
@@ -16,11 +17,13 @@ class tstatrecord:
         self.client_port          = int(t[1])       # Client/Server TCP port - TCP port addresses for the client/server
         if self.client_port == 22:
             self.err = True
+	    self.err_code = 1
             return
 
         self.server_port          = int(t[15])           # Client/Server TCP port - TCP port addresses for the client/server
         if self.server_port == 22:
             self.err = True
+	    self.err_code = 2
             return
 
         self.timestamp = float(t[28]) / 1000        # First time (ms) Flow first packet since first segment ever
