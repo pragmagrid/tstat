@@ -60,12 +60,24 @@
 
 >Simple Handler has been added to let user know which error has been Occurred.
 
-#### Will be Updated
-
 - Export Dashboard
 
->Exporting Dashboard is necessary when case of using chronograph in different server, and for backup
+>Dashboard will be exported through export.sh (shell script). But it only exports the dashboard frame not the datas. Also it will create a JSON file of dashboard on export directory in case of backup.
 
-- Track of log files
+#### Will be Updated
 
->Need to know how far log files have been process, so that I do not have lost log files and also faster process
+- Track of log files (working on currently)
+
+>Need to know how far log files have been process, so that I do not have lost log files and also faster process.
+
+- Exporting Shell Script's External Configuration File
+
+>To be adopted in different environments, it needs an file to configure settings.
+
+- Chronograph Default Style Dashboard
+
+>Needs to find out how to set a default dashboard so that anytime other user install this, certain format of dashboard is installed as well
+
+- User Setting
+
+>Adds some kind of security on accessing and editing DB.
