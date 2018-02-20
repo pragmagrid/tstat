@@ -1,59 +1,65 @@
-# -*- coding: utf-8 -*-
+#!/opt/python/bin/python2.7
 
-import config
+import log_tcp_complete as tstat
 import time
-from influxdb import InfluxDBClient
+from influxDB_python import database
+import config
 
+class run:
 
-class database():
-    """database"""
-	
-    is_exist = False
+    total = 0
+    total_err = 0
 
-    def __init__(self, host, port):
-        self.host = host
-        self.port = port
+    def fileread(self, filename, dirname):
 
-    def insert(self, jsons, epoch):
-        """Instantiate a connection to the InfluxDB.
-        """
-        user = config.CONFIG['id']
-        password = config.CONFIG['password']
-        dbname = config.CONFIG['dbname']
-	timestamp = time.strftime('%Y-%m-%dT%H:%M:%SZ', time.localtime(epoch))
-        json_body = [
-            {
-                "measurement": "log_tcp_complete",
-                "tags": {
-                    "host": config.CONFIG['hostname']
-                },
-                "time": timestamp,
-                "fields": {
-                }
-            }
-        ]
+        f = open(filename)
 
-        json_body[0]['fields'] = jsons
+        line = f.readline()
+        if line.startswith("#"):
+            # first line in the tstat tcp complete is not an actual data, it is just a header information.
+            line = f.readline()
+            self.total += 1
+            while len(line.strip()) > 0:
 
-        client = InfluxDBClient(self.host, self.port, user, password, dbname)
+                record = tstat.tstatrecord(line)
 
-	dblist = client.get_list_database()
-	#list of DB already created
-        self.is_exist = self.search_dictionaries('name', dbname, dblist)	
+                if record.err is not True:
+                    epoch = record.timestamp
+                    # if run.time_constraint(self, epoch) is True:
+                    run.interact(self, record, epoch)
+                    # else:
+                    #     print("time out")
+                else:
+                    run.error_handle(self, record.err_code)
+                    self.total_err += 1
 
-	#minimize the number of create_db func called
-        if self.is_exist:
-            print('exists')
+                line = f.readline()
+                self.total += 1
+
+        f.close()
+        print("END")
+
+        f = open(config.CONFIG['file_list_path']+"/progress.txt", 'a')
+        f.write(dirname+'\n')
+        f.close()
+
+    def interact(self, record, epoch):
+        record = record.__dict__
+        db = database(config.CONFIG['host'], config.CONFIG['port'])
+        db.insert(record, epoch)
+
+    def error_handle(self, code):
+        if code == 1:
+            print('Broken Log File')
+        elif code == 2:
+            print('Port No.22')
         else:
-            client.create_database(dbname)
+            print('Unknown Err')
 
-        print("Write points: {0}".format(json_body))
-        client.write_points(json_body)
-
-
-    def search_dictionaries(self, key, value, list_of_dictionaries):
-        result = [element for element in list_of_dictionaries if element[key] == value]
-        if not result:
-            return False
-        else:
+    def time_constraint(self, epoch):
+        current_time = float(time.time())
+        if (current_time - epoch) <= config.CONFIG['time_constraint']:
             return True
+        else:
+            return False
+
