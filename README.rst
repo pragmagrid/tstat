@@ -98,13 +98,55 @@ Using
 
 Read the original users guide for inforation on how to create config files and run tstat.
 
-#. To run with histogram:
+#. To run with histogram for public interface on eth5 and save output in traces/ : ::
 
-   /opt/tstat/bin/tstat -N l.conf -l -i eth5 -H histo.conf -s traces
+       /opt/tstat/bin/tstat -N l.conf -l -i eth5 -H tcp-histo.conf -s traces
 
-#. To Run with RRD :
+   File l.conf ::
+
+       10.1.1.0/24
+       67.58.51.191/255.255.255.224
+
+
+   File tcp-histo.conf ::
+
+       include profile_tcpdata
+       include profile_flows
+       include profile_cpu
+       include L7_TCP_num_in
+       include L7_TCP_num_out
+       include tcp_thru_lf_s2c
+       include tcp_thru_lf_c2s
+       include tcp_thru_s2c
+       include tcp_thru_c2s
+       include tcp_tot_time
+       include tcp_opts_MPTCP
+       include tcp_opts_TS
+       include tcp_opts_WS
+       include tcp_opts_SACK
+       include tcp_port_src_loc
+       include tcp_port_src_out
+       include tcp_port_src_in
+       include ip_protocol_loc
+       include ip_protocol_out
+       include ip_protocol_in
+
+
+#. To Run with RRD : ::
    
-   tstat -R -l -N l.conf -H histo.conf -i eth5 -s traces2 -r traces2
+       /opt/tstat/bin/tstat -R -l -N l.conf -H histo.conf -i eth5 -s traces2 -r traces2
+
+   File histo.conf ::
+
+       include ip_len_loc
+       include ip_bitrate_loc
+       include udp_bitrate_loc
+       include udp_bitrate_out
+       include udp_bitrate_in
+       include L7_UDP_num_loc
+       include L7_UDP_num_in
+       include L7_UDP_num_out
+ 
 
 Using Chronograf
 -------------------
