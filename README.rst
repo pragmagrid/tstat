@@ -18,6 +18,7 @@ Downloads
     wget https://dl.influxdata.com/chronograf/releases/chronograf-1.4.0.1.x86_64.rpm
     wget https://dl.influxdata.com/kapacitor/releases/kapacitor-1.4.0.x86_64.rpm
     wget https://dl.influxdata.com/telegraf/releases/telegraf-1.5.1-1.x86_64.rpm
+    wget https://github.com/stedolan/jq/releases/download/jq-1.5/jq-1.5.tar.gz
 
 Github repo for a python client for influxdb ias available at `influxdb-python`_.
 Get latest release v.5.0.0 (as of Jan 2018) ::
@@ -36,6 +37,8 @@ influxdb-python dependencies ::
         chardet: https://pypi.python.org/pypi/chardet
         certifi: https://pypi.python.org/pypi/certifi
         idna: https://pypi.python.org/pypi/certifi
+
+for chronograf dashboard import/export use jq.
 
 
 NOTE: influxdb-python may not work with influxdb RPM version 1.4.2 but is stateds to work with 
