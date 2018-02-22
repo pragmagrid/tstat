@@ -4,21 +4,21 @@
 
 ##### InfluxDB 1.4
 
->For influxDB 8086 port used
+> For influxDB 8086 port used
 
 ##### Chronograph 1.4
 
->Instead of 8888 which is default, 8080 port has been used
+> Instead of 8888 which is default, 8080 port has been used
 
 ## Setup
 
 ##### Start InfluxDB
 
->/etc/rc.d/init.d/influxdb start
+> /etc/rc.d/init.d/influxdb start
 
 ##### Start Chronograph
 
->/etc/rc.d/init.d/chronograf start
+> /etc/rc.d/init.d/chronograf start
 
 ## Run
 
@@ -40,3 +40,13 @@ Anything else except chronograph port, make change in config.py.
 Prefer to be specific and meaningful name for variable and functions.
 
 If there are more than a word, naming will be word1_word2.
+
+## Useful Reference
+
+##### User Authentication
+
+> https://docs.influxdata.com/influxdb/v1.4/query_language/authentication_and_authorization/#set-up-authentication
+
+##### Chronograph pre-created Dashboards
+
+> https://github.com/influxdata/chronograf

@@ -81,3 +81,28 @@
 - User Setting
 
 >Adds some kind of security on accessing and editing DB.
+
+
+
+## 2018 FEB WEEK 02
+
+#### Updated
+
+- Track of log Files
+
+> As main.py runs, directories which are processed completely and inserted in influxDB will be recorded in a progress.txt file. Directories which are recorded in the progress.txt file will not be read again.
+
+- Chronograph Pre-Created Dashboard (Discard)
+
+> Changing in telegraf.conf [input plugins] will allow chronograf to use several pre-created dashboards. With this, trying to use dashboard that is already made.
+> Problem : need to install plugin into telegraf (GO)
+
+#### Will be updated
+
+- User Authentication
+
+>Create admin user, without accessing authorized ID can not access influxDB
+
+- Exporting Shell Script's External Configuration File
+
+>To be adopted in different environments, it needs an file to configure settings.
