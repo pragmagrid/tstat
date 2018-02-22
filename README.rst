@@ -165,4 +165,6 @@ See `Influxdata chronograf docs`_
 .. _influxdb-python : https://github.com/influxdata/influxdb-python
 .. _Influxdata chronograf docs : https://docs.influxdata.com/chronograf/v1.4/introduction/getting-started/
 
-test
+See `jq website`_ for jq info
+
+.. _jq website : https://stedolan.github.io/jq/download/
