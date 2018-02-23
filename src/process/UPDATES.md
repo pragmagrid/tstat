@@ -84,7 +84,7 @@
 
 
 
-## 2018 FEB WEEK 02
+## 2018 FEB WEEK 03
 
 #### Updated
 
@@ -97,12 +97,19 @@
 > Changing in telegraf.conf [input plugins] will allow chronograf to use several pre-created dashboards. With this, trying to use dashboard that is already made.
 > Problem : need to install plugin into telegraf (GO)
 
-#### Will be updated
-
-- User Authentication
-
->Create admin user, without accessing authorized ID can not access influxDB
-
 - Exporting Shell Script's External Configuration File
 
->To be adopted in different environments, it needs an file to configure settings.
+> To be adopted in different environments, it needs an file to configure settings.
+
+- Importing Pre-Defined Dashboard into Chronograph
+
+> /python/export/import.sh is the shell script.
+> Able to configure to select JSON file to import and which server to import.
+
+#### Will be updated
+
+- User Authentication (Continue)
+
+> Create admin user, without accessing authorized ID can not access influxDB
+> telegraf, InfluxDB is now secure but still wondering about chronograf
+> https://docs.influxdata.com/chronograf/v1.4/administration/managing-security/#tls--transport-layer-security-and-https

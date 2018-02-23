@@ -30,7 +30,7 @@ class run:
                     # else:
                     #     print("time out")
                 else:
-                    run.error_handle(self, record.err_code)
+                    # run.error_handle(self, record.err_code)
                     self.total_err += 1
 
                 line = f.readline()
@@ -62,4 +62,3 @@ class run:
             return True
         else:
             return False
-

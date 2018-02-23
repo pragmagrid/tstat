@@ -19,7 +19,7 @@ def searchfile():
         list_written_directories = temp.split()
 
 
-    print(list_written_directories)
+    #print(list_written_directories)
 
     for root, dirs, files in os.walk(path):
 
@@ -30,7 +30,7 @@ def searchfile():
                 full_dirname = os.path.join(path, dirname)
 
                 if full_dirname in list_written_directories:
-                    print('already in here')
+                    print(full_dirname + ' : already in here')
                 else:
 
                     filenames = os.listdir(full_dirname)
@@ -56,4 +56,3 @@ def analyze(total, total_err):
 
 
 searchfile()
-

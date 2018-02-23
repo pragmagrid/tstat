@@ -20,9 +20,40 @@
 
 > /etc/rc.d/init.d/chronograf start
 
+## Classes
+
+##### config.py
+
+> For configurations
+
+##### log_tcp_complete.py
+
+> This class will parse tstat and gather certain datas and make as one big object
+> If other fields in tstat is needed then give change in this class
+
+##### process.py
+
+> with parsed object from log_tcp_complete, it process to InfluxDB
+
+##### influxDB_python
+
+> This will be called by process, and in this class connection to the InfluxDB is set.
+> Here datas will be written into the connected InfluxDB.
+
+##### main.py
+
+> main class which checks directories that have not processed and will call process.py for process
+
+##### setup_admin.sh
+
+> create admin user with input ID and PWD
+
 ## Run
 
-./run.py
+1. run setup_admin.sh (it will setup authentication by making admin user)
+2. goto chronograf webpage -> InfluxDB Admin -> Users (check if there is an admin user have created)
+3. open InfluxDB.conf -> Search [http] -> uncomment auth-enabled -> change the value from false to true (default is false)
+4. open telegraf.conf -> Search [Output] -> InfluxDB -> set username = [admin username that you made], password = [admin password that you set]
 
 
 ## Configuration for other env
@@ -41,11 +72,19 @@ Prefer to be specific and meaningful name for variable and functions.
 
 If there are more than a word, naming will be word1_word2.
 
+## log Track
+
+progress.txt will be made as you run this program.
+
+In progress.txt the directories that have been insulted properly into the InfluxDB will be recorded so that there are no waste of process.
+
 ## Useful Reference
 
 ##### User Authentication
 
 > https://docs.influxdata.com/influxdb/v1.4/query_language/authentication_and_authorization/#set-up-authentication
+
+> https://docs.influxdata.com/chronograf/v1.4/administration/managing-influxdb-users/#step-3-create-an-admin-user
 
 ##### Chronograph pre-created Dashboards
 
