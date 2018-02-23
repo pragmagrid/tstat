@@ -112,4 +112,4 @@
 
 > Create admin user, without accessing authorized ID can not access influxDB
 > telegraf, InfluxDB is now secure but still wondering about chronograf
-> https://docs.influxdata.com/chronograf/v1.4/administration/managing-security/#tls--transport-layer-security-and-https
+>  https://docs.influxdata.com/chronograf/v1.4/administration/managing-security/#tls--transport-layer-security-and-https
