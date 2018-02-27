@@ -18,6 +18,7 @@ Downloads
     wget https://dl.influxdata.com/chronograf/releases/chronograf-1.4.0.1.x86_64.rpm
     wget https://dl.influxdata.com/kapacitor/releases/kapacitor-1.4.0.x86_64.rpm
     wget https://dl.influxdata.com/telegraf/releases/telegraf-1.5.1-1.x86_64.rpm
+    wget https://github.com/stedolan/jq/releases/download/jq-1.5/jq-1.5.tar.gz
 
 Github repo for a python client for influxdb ias available at `influxdb-python`_.
 Get latest release v.5.0.0 (as of Jan 2018) ::
@@ -36,6 +37,8 @@ influxdb-python dependencies ::
         chardet: https://pypi.python.org/pypi/chardet
         certifi: https://pypi.python.org/pypi/certifi
         idna: https://pypi.python.org/pypi/certifi
+
+for chronograf dashboard import/export use jq.
 
 
 NOTE: influxdb-python may not work with influxdb RPM version 1.4.2 but is stateds to work with 
@@ -95,13 +98,55 @@ Using
 
 Read the original users guide for inforation on how to create config files and run tstat.
 
-#. To run with histogram:
+#. To run with histogram for public interface on eth5 and save output in traces/ : ::
 
-   /opt/tstat/bin/tstat -N l.conf -l -i eth5 -H histo.conf -s traces
+       /opt/tstat/bin/tstat -N l.conf -l -i eth5 -H tcp-histo.conf -s traces
 
-#. To Run with RRD :
+   File l.conf ::
+
+       10.1.1.0/24
+       67.58.51.191/255.255.255.224
+
+
+   File tcp-histo.conf ::
+
+       include profile_tcpdata
+       include profile_flows
+       include profile_cpu
+       include L7_TCP_num_in
+       include L7_TCP_num_out
+       include tcp_thru_lf_s2c
+       include tcp_thru_lf_c2s
+       include tcp_thru_s2c
+       include tcp_thru_c2s
+       include tcp_tot_time
+       include tcp_opts_MPTCP
+       include tcp_opts_TS
+       include tcp_opts_WS
+       include tcp_opts_SACK
+       include tcp_port_src_loc
+       include tcp_port_src_out
+       include tcp_port_src_in
+       include ip_protocol_loc
+       include ip_protocol_out
+       include ip_protocol_in
+
+
+#. To Run with RRD : ::
    
-   tstat -R -l -N l.conf -H histo.conf -i eth5 -s traces2 -r traces2
+       /opt/tstat/bin/tstat -R -l -N l.conf -H histo.conf -i eth5 -s traces2 -r traces2
+
+   File histo.conf ::
+
+       include ip_len_loc
+       include ip_bitrate_loc
+       include udp_bitrate_loc
+       include udp_bitrate_out
+       include udp_bitrate_in
+       include L7_UDP_num_loc
+       include L7_UDP_num_in
+       include L7_UDP_num_out
+ 
 
 Using Chronograf
 -------------------
@@ -136,3 +181,6 @@ See `Influxdata chronograf docs`_
 .. _influxdb-python : https://github.com/influxdata/influxdb-python
 .. _Influxdata chronograf docs : https://docs.influxdata.com/chronograf/v1.4/introduction/getting-started/
 
+See `jq website`_ for jq info
+
+.. _jq website : https://stedolan.github.io/jq/download/

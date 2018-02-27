@@ -1,0 +1,535 @@
+<!-- Header -->
+<!DOCTYPE HTML PUBLIC "-//W3C//DTD HTML 4.01//EN">
+<html>
+<head>
+   <TITLE>Tstat - TCP STatistic and Analysis Tool</TITLE>
+   <META NAME="Author" CONTENT="D. Rossi">
+   <meta name="GENERATOR" content="nedit">
+   <LINK href="tstat.css" rel=stylesheet>
+   <LINK REL="icon" HREF="/favicon.ico">
+
+<!--
+<script src="http://www.google-analytics.com/urchin.js" type="text/javascript">
+</script>
+<script type="text/javascript">
+_uacct = "UA-705641-1";
+urchinTracker();
+</script>
+-->
+
+<script TYPE="text/javascript">
+<!-- // dumb
+
+var x = 1;
+
+//find slides | awk '{ printf "slides[%d]=\"%s\"\n", NR-1, $0 }'
+var images = new Array(
+  "slides/01_Title.png",
+  "slides/02_agenda01.png",
+  "slides/03_feat01.png",
+  "slides/04_archi01.png",
+  "slides/05_archi02.png",
+  "slides/06_archi03.png",
+  "slides/07_archi04.png",
+  "slides/08_syn01.png",
+  "slides/09_syn02.png",
+  "slides/10_syn02-bis.png",
+  "slides/11_syn03.png",
+  "slides/12_syn03-bis.png",
+  "slides/13_syn03-ter.png",
+  "slides/14_syn03-quater.png",
+  "slides/15_syn04.png",
+  "slides/16_perl01.png",
+  "slides/17_perl02.png",
+  "slides/18_perl03.png",
+  "slides/19_perl04.png",
+  "slides/20_perl05.png",
+  "slides/21_end.png"
+);
+
+
+function back_img(){
+	if (x != 1){
+		document.image1.src = images[x-1]
+		x--	
+                }
+}
+
+function fwd_img(){
+	if (x != 20){		//Change the 5 here to your total number 
+		document.image1.src = images[x+1]
+		x++	}
+}
+
+function limit(x) {
+   if (x<1) { 
+      return 1;
+   } else if (x>21) {
+      return 21;
+   } else {
+      return x;
+   }  
+}
+
+function next()  { 
+         x = limit(x+1); 
+        document.slideshow.src = slides[x]; 
+}
+
+function prev()  {
+        x = limit(x-1); 
+        document.slideshow.src=slides[x]; 
+}
+-->
+</script>
+
+</head>
+
+
+<body text="#000000" bgcolor="#ffffff" link="#000066" vlink="#660066"
+alink="#ff0000">
+
+<div align="center"> <br> </div>
+
+<center>
+<table cellspacing="0" cellpadding="0" >
+<!-- width=600 -->
+<tbody>
+    <tr>
+        <td rowspan="2"> 
+	<a href="/logos.shtml">
+	<img src="img/tstat.logo.png" 
+	     name="tstat_logo"
+	     width=400
+	     border=0
+	     height=100 />
+	</a>     
+        </td>
+        
+<td>
+  <table>
+    <tr>
+        <td valign="middle" height="35" align="right"><tt><b><big>
+        <font color="#b0b0b0" size="+2"><big>
+
+        <!-- my first html script -->
+        <!-- ###
+        #echo var="DOCUMENT_NAME"
+        -->
+
+        <!-- I'm proud of my second html script -->
+        <SCRIPT TYPE="text/javascript">        
+        <!--            
+          var url = document.URL;
+          token = url.split('/');
+          fileName = token.pop();
+	  dirName = token.pop();
+	  if ( dirName.substring(0,9) == "tstat.old" ) {
+             document.write("Tstat::OldWeb");
+	  } else if ( fileName.substring(0,4) == "doc_" ) {
+          } else if ( fileName.substring(0,7) == "slide_" ) {
+             document.write("Tstat::Slides");
+          } else if ( fileName.substring(0,1) == "") {
+             document.write("Tstat::Index");               
+          } else {
+             id = fileName.indexOf(".shtml")
+	     if( id == -1 ) {
+                 id = fileName.indexOf(".php")
+	     }
+             first = fileName.substring(0,1); 
+             rest = fileName.substring(1,id);
+             document.write("Tstat::" , first.toUpperCase(), rest.toLowerCase());
+	     //, "&nbsp");
+          }
+          // token = fileName.split('.');
+          // first = token[0].substring(0,1); 
+          // rest = token[0].substring(1);
+          // document.write("Tstat::" , first.toUpperCase(), rest.toLowerCase());
+        //-->
+        </SCRIPT>
+        
+
+        </big></font></big> </b></tt>
+        <br>
+        </td>
+
+   <tr>
+        <td width="80%" bgcolor="#b0b0b0" align="right">
+            <!-- font face="arial,helvetica" color="#ffffff" -->
+	    <b><font face="courier" color="#ffffff" size=+2 >
+            TCP STatistic and Analysis Tool&nbsp
+            </font></b>
+       </td>
+   </tr>
+
+</table>
+<td rowspan="2">
+<a href="http://www3.clustrmaps.com/counter/maps.php?url=http://tstat.polito.it" id="clustrMapsLink"><img src="http://www3.clustrmaps.com/counter/index2.php?url=http://tstat.polito.it" style="border:0px;" alt="Locations of visitors to this page" title="Locations of visitors to this page" id="clustrMapsImg" onError="this.onError=null; this.src='http://www2.clustrmaps.com/images/clustrmaps-back-soon.jpg'; document.getElementById('clustrMapsLink').href='http://www2.clustrmaps.com'" />
+</a>
+
+
+       </td>
+
+
+ 
+   </tr>
+
+</tbody>
+</table>
+</center>
+
+
+<center>
+<p><br>
+<font face="verdana,rial,helvetica"> 
+     <a href="http://tstat.polito.it/">Tstat home</a>      | 
+     <a href="http://www.tlc-networks.polito.it/">TNG home</a>  
+<!-- |
+     <a href="http://www.tlc-networks.polito.it/work.html">workgroup</a>  |
+     <a href="http://www.tlc-networks.polito.it/people.html">people</a>   |
+     <a href="http://www.tlc-networks.polito.it/software.html">software</a>      | 
+     <a href="http://www.tlc-networks.polito.it/papers.html">papers</a>     
+-->
+</font>
+<br></p>
+</center>
+
+
+
+<table border=0 width="100%" ><tr>
+
+<!-- -->
+<!-- START content --> <td width="80%" align="left"> 
+
+<iframe src="/cgi-bin/tstat_rrd.cgi?var=NULL&dir=rrd_data"
+	SCROLLING=AUTO 
+	frameborder=0 
+	width=905 
+	height=3000 /> 
+	
+If your browser do not support <tt>iframes</tt>, you may access the
+page same page 
+<A HREF="/cgi-bin/tstat_rrd.cgi?var=NULL&dir=rrd_data">
+here</A>
+</iframe>
+
+
+
+<!--  END content  --> </td>
+<!-- -->
+      <td width="20%" valign="top"> <table border="0" cellspacing="0" width="200"> 
+<tbody>
+      <tr align="left"><td> &nbsp </td>
+      <td width="83%" bgcolor="#999999">                          
+      <b><font color="#ffffff">
+          Navigation Shortcuts
+      </font></b></td></tr>
+
+      <tr align="left"><td> &nbsp </td>
+      <td width="83%" bgcolor="#ffff99">
+      <u><font color="#000080">
+             <a href="http://tstat.polito.it/">  Main  </a>
+      </font></u>
+      </td></tr>
+       
+      
+<!--     <tr align="left" bgcolor="#ffff99"><td>&nbsp</td></tr> -->
+      <tr align="left"><td> &nbsp </td>
+      <td width="83%" bgcolor="#ffff99">
+      <u><font color="#000080">
+             <a href="/overview.shtml">  Overview  </a>
+      </font></u>
+      </td></tr>
+
+
+      <tr align="left"><td> &nbsp </td>
+      <td width="83%" bgcolor="#ffff99">
+      <u><font color="#000080">
+             <a href="/web.shtml">  Web Interface  </a>
+      </font></u>
+      </td></tr>
+            <tr align="left"><td> &nbsp </td>
+            <td width="83%" bgcolor="#ffff99">
+            &nbsp &nbsp &nbsp
+            Gallery<!-- <u><font color="#000080">
+                     <a href="cgi-bin/tstat_rrd.cgi?gallery_show=1">Gallery</a>
+            </font></u> -->
+            </td></tr>
+	
+
+      
+<!--     <tr align="left" bgcolor="#ffff99"><td>&nbsp</td></tr> -->
+      <tr align="left"><td> &nbsp </td>
+      <td width="83%" bgcolor="#ffff99">
+      <font color="#000080">
+             <a href="/software.php">Download</a>
+      </font>
+      </td></tr>
+      
+            <tr align="left"><td> &nbsp </td>
+            <td width="83%" bgcolor="#ffff99">
+            &nbsp &nbsp &nbsp
+            <u><font color="#000080">
+                     <a href="/software.php#download">Archives</a>
+            </font></u>
+            </td></tr>
+            <tr align="left"><td> &nbsp </td>
+            <td width="83%" bgcolor="#ffff99">
+            &nbsp &nbsp &nbsp
+            <u><font color="#000080">
+                     <a href="/viewvc/software/tstat">SVN</a>
+            </font></u>
+            </td></tr>
+<!--
+            <tr align="left"><td> &nbsp </td>
+            <td width="83%" bgcolor="#ffff99">
+            &nbsp &nbsp &nbsp
+            <u><font color="#000080">
+                     <a href="/software.php#postprocess">Post-Process</a>
+            </font></u>
+            </td></tr>
+-->
+
+<!--     <tr align="left" bgcolor="#ffff99"><td>&nbsp</td></tr> -->
+      <tr align="left"><td> &nbsp </td>
+      <td width="83%" bgcolor="#ffff99">
+      <u><font color="#000080">
+             <a href="/traces.shtml">  Available Traces  </a>
+      </font></u>
+      </td></tr>
+         <tr align="left"><td> &nbsp </td>
+            <td width="83%" bgcolor="#ffff99">
+            &nbsp  &nbsp &nbsp
+            <font color="#000080">
+                   <a href="/traces-http-bulk-download.shtml">Mobile</a>
+            </font>
+            </td></tr>
+         <tr align="left"><td> &nbsp </td>
+            <td width="83%" bgcolor="#ffff99">
+            &nbsp  &nbsp &nbsp
+            <font color="#000080">
+                   <a href="/traces-tcpcomplete.shtml">Log TCP</a>
+            </font>
+            </td></tr>
+         <tr align="left"><td> &nbsp </td>
+            <td width="83%" bgcolor="#ffff99">
+            &nbsp  &nbsp &nbsp
+            <font color="#000080">
+                   <a href="/traces-webrowse.shtml"> WeBrowse</a>
+            </font>
+            </td></tr>
+
+      <tr align="left"><td> &nbsp </td>
+            <td width="83%" bgcolor="#ffff99">
+            &nbsp  &nbsp &nbsp 
+            <font color="#000080">
+                   <a href="/traces-skype.shtml"> Skype</a>
+            </font>
+            </td></tr>
+            <tr align="left"><td> &nbsp </td>
+            <td width="83%" bgcolor="#ffff99">
+            &nbsp  &nbsp &nbsp 
+            <font color="#000080">
+                   <a href="/traces-IM.shtml"> Instant Messaging</a>
+            </font>
+            </td></tr>
+         <tr align="left"><td> &nbsp </td>
+            <td width="83%" bgcolor="#ffff99">
+            &nbsp  &nbsp &nbsp 
+            <font color="#000080">
+                   <a href="/traces-IPTV.shtml"> Multicast IP-TV</a>
+            </font>
+            </td></tr>
+
+<!--     <tr align="left" bgcolor="#ffff99"><td>&nbsp</td></tr> -->
+      <tr align="left"><td> &nbsp </td>
+      <td width="83%" bgcolor="#ffff99">
+             <a href="/docs.php">Documentation</a>
+      </td></tr>
+
+            <tr align="left"><td> &nbsp </td>
+            <td width="83%" bgcolor="#ffff99">
+            &nbsp  &nbsp &nbsp 
+            <font color="#000080">
+                   <a href="/measure.shtml"> Measurement</a>
+            </font>
+            </td></tr>
+            
+            </td></tr>
+        	  <tr align="left"><td> &nbsp  </td>
+        	  <td width="83%" bgcolor="#ffff99">
+        	  &nbsp  &nbsp &nbsp &nbsp &nbsp &nbsp
+        	  <font color="#000080">
+                	 <a href="/measure.shtml#histo"> Histograms</a>
+        	  </font>
+        	  </td></tr>
+
+        	  </td></tr>
+        	  <tr align="left"><td> &nbsp </td>
+        	  <td width="83%" bgcolor="#ffff99">
+        	  &nbsp  &nbsp &nbsp &nbsp &nbsp &nbsp
+        	  <font color="#000080">
+                	 <a href="/measure.shtml#LOG"> Logs</a>
+        	  </font>
+        	  </td></tr>
+        	  <tr align="left"><td> &nbsp  </td>
+        	  <td width="83%" bgcolor="#ffff99">
+        	  &nbsp  &nbsp &nbsp &nbsp &nbsp &nbsp
+        	  <font color="#000080">
+                	 <a href="/HOWTO.shtml#rrd_module"> RRD interface</a>
+        	  </font>
+        	  </td></tr>
+            
+            <tr align="left"><td> &nbsp </td>
+            <td width="83%" bgcolor="#ffff99">
+            &nbsp &nbsp &nbsp
+            <u><font color="#000080">
+                     <a href="/publications.php">Publications</a>
+            </font></u>
+            </td></tr> 
+            
+<!--            
+            
+            <tr align="left"><td> &nbsp </td>
+            <td width="83%" bgcolor="#ffff99">
+            &nbsp  &nbsp &nbsp
+            <font color="#000080">
+                   <a href="/HOWTO.shtml#output"> Output</a>
+            </font>
+            </td></tr>
+
+        	  </td></tr>
+        	  <tr align="left"><td> &nbsp  </td>
+        	  <td width="83%" bgcolor="#ffff99">
+        	  &nbsp  &nbsp &nbsp &nbsp &nbsp &nbsp
+        	  <font color="#000080">
+                	 <a href="/HOWTO.shtml#histo"> Histograms</a>
+        	  </font>
+        	  </td></tr>
+
+        	  </td></tr>
+        	  <tr align="left"><td> &nbsp </td>
+        	  <td width="83%" bgcolor="#ffff99">
+        	  &nbsp  &nbsp &nbsp &nbsp &nbsp &nbsp
+        	  <font color="#000080">
+                	 <a href="/HOWTO.shtml#logs"> Logs</a>
+        	  </font>
+        	  </td></tr>
+        	  </td></tr>
+        	  <tr align="left"><td> &nbsp  </td>
+        	  <td width="83%" bgcolor="#ffff99">
+        	  &nbsp  &nbsp &nbsp &nbsp &nbsp &nbsp
+        	  <font color="#000080">
+                	 <a href="/HOWTO.shtml#rrd"> RRD</a>
+        	  </font>
+        	  </td></tr>
+
+            
+
+
+            <tr align="left"><td> &nbsp </td>
+            <td width="83%" bgcolor="#ffff99">
+            &nbsp  &nbsp
+            <font color="#000080">
+                   <a href="/docs.php#talks"> Talks </a>
+            </font>
+            </td></tr>
+-->
+
+
+            <tr align="left"><td> &nbsp </td>
+            <td width="83%" bgcolor="#ffff99">
+            &nbsp &nbsp &nbsp
+            <u><font color="#000080">
+                     <a href="/HOWTO.shtml">HOWTO</a>
+            </font></u>
+            </td></tr>
+            
+            </td></tr>
+
+<!--
+      <tr align="left"><td> &nbsp </td>
+      <td width="83%" bgcolor="#ffff99">
+      <u><font color="#000080">
+                <a href="screenshot.shtml">Screenshots</a></font></u></td>
+      </font></u>
+      </td></tr>
+-->
+    
+<!--      <tr align="left" bgcolor="#ffff99"><td>&nbsp</td></tr> -->
+
+      <tr align="left"><td> &nbsp </td>
+      <td width="83%" bgcolor="#ffff99">
+      <u><font color="#000080">
+             <a href="/links.shtml">  Useful Links  </a>
+      </font></u>
+      </td></tr>
+	
+
+      <tr align="left" ><td> &nbsp </td>
+      <td bgcolor="#ffff99">
+      	<font color="#000080"> 
+      	Contacts</td></tr>      
+      	</font>
+      </td></tr>
+
+      <tr align="left" valign="top"><td> &nbsp </td>
+      <td width="83%" bgcolor="#ffff99">  
+        <a href="https://mail.tlc.polito.it/cgi-bin/mailman/listinfo/tstat">
+                <img border=0 src="img/icon_mail.gif" name="icon_mail"></img></a> 
+      <font color="#000080"> 
+        <a href="https://mail.tlc.polito.it/cgi-bin/mailman/listinfo/tstat">
+      Tstat Mailing List
+      </a>
+      </font>
+      </td></tr>
+
+      <tr align="left" valign="top"><td> &nbsp </td>
+      <td width="83%" bgcolor="#ffff99">  
+        <a href="http://www.tlc-networks.polito.it/mellia">
+                <img border=0 src="img/icon_home.gif" name="icon_home"></img></a> 
+        <a href="mailto:mellia [at] polito [dot] it">
+                <img border=0 src="img/icon_mail.gif" name="icon_mail"></img></a> 
+      <font color="#000080"> 
+      M. Mellia
+      </font>
+      </td></tr>
+	
+      <tr align="left" valign="top"><td> &nbsp </td>
+      <td width="83%" bgcolor="#ffff99">  
+        <a href="http://www.tlc-networks.polito.it/munafo">
+                <img border=0 src="img/icon_home.gif" name="icon_home"></img></a> 
+        <a href="mailto:munafo [at] polito [dot] it">
+                <img border=0 src="img/icon_mail.gif" name="icon_mail"></img></a> 
+      <font color="#000080"> 
+      M. Munaf&ograve;
+      </font>
+      </td></tr>
+ </td>
+      </tr></table>
+</tr></table>
+
+<!-- Footer -->
+<center>
+<p><br>
+<font face="verdana,rial,helvetica" size=-1> 
+     <a href="/index.shtml">Tstat home</a>      | 
+     <a href="http://www.tlc-networks.polito.it/index.html">TNG home</a>  |
+     <a href="http://www.tlc-networks.polito.it/work.html">workgroup</a>  |
+     <a href="http://www.tlc-networks.polito.it/people.html">people</a>   |
+     <a href="http://www.tlc-networks.polito.it/software.html">software</a>      | 
+     <a href="http://www.tlc-networks.polito.it/papers.html">papers</a>     
+</font>
+<br></p>
+</center>
+
+
+<p><font face="arial,helvetica" size="-1">
+&copy;2008 Telecommunication Networks Group - Politecnico di Torino
+</font>
+</p><br><br>
+
+
+</body>
+</html>
+
