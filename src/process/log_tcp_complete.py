@@ -1,3 +1,7 @@
+#!/opt/python/bin/python2.7
+
+import decimal
+
 conn_type = ['UNK', 'HTTP', 'RSTP', 'RTP', 'ICY', 'RTCP', 'MSN', 'YMSG', 'XMPP', 'P2P', 'SKYPE', 'SMTP', 'POP3', 'IMAP4', 'SSL', 'ED2K', 'SSH', 'RTMP', 'MSE/PE']
 
 class tstatrecord:
@@ -7,7 +11,7 @@ class tstatrecord:
 
         #Flag to detect error
         self.err = False
-	self.err_code = 0	
+	self.err_code = 0
 
         if len(t) < 130:
             self.err = True
@@ -45,6 +49,5 @@ class tstatrecord:
         self.s2c_average_round_trip_time      = float(t[51])        # Average rtt  (ms)  Average RTT computed measuring the time elapsed between the data segment and the corresponding ACK
 
         #Retransmitted segments
-        self.c2s_retransmission_timeouts         = int(t[78])       #  rtx RTO - Number of retransmitted segments due to timeout expiration
-        self.s2c_retransmission_timeouts         = int(t[101])      #  rtx RTO - Number of retransmitted segments due to timeout expiration
-
+        self.c2s_retransmission               = int(t[9])           #number of retransmitted segments
+        self.s2c_retransmission               = int(t[23])          #number of retransmitted segments

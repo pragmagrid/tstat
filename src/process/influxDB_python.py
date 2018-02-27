@@ -1,4 +1,5 @@
 # -*- coding: utf-8 -*-
+#!/opt/python/bin/python2.7
 
 import config
 import time

@@ -54,6 +54,8 @@
 2. goto chronograf webpage -> InfluxDB Admin -> Users (check if there is an admin user have created)
 3. open InfluxDB.conf -> Search [http] -> uncomment auth-enabled -> change the value from false to true (default is false)
 4. open telegraf.conf -> Search [Output] -> InfluxDB -> set username = [admin username that you made], password = [admin password that you set]
+5. open conf.py -> type username, password
+6. run main.py with ./main.py
 
 
 ## Configuration for other env
@@ -89,3 +91,11 @@ In progress.txt the directories that have been insulted properly into the Influx
 ##### Chronograph pre-created Dashboards
 
 > https://github.com/influxdata/chronograf
+
+##### Tstat Structure
+
+> http://tstat.polito.it/measure.shtml#LOG
+
+> log_tcp_complete.py only parse window size, time (duration of the transfer), total bytes transmitted, retransmits, average rount trip time
+
+> log_tcp_complete_all.py will parse every fields (reference : https://github.com/straverso/tstat-post-processing)

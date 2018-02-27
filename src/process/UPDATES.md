@@ -112,4 +112,17 @@
 
 > Create admin user, without accessing authorized ID can not access influxDB
 > telegraf, InfluxDB is now secure but still wondering about chronograf
->  https://docs.influxdata.com/chronograf/v1.4/administration/managing-security/#tls--transport-layer-security-and-https
+
+> https://docs.influxdata.com/chronograf/v1.4/administration/managing-security/#tls--transport-layer-security-and-https
+
+## 2018 FEB WEEK 04
+
+#### updated
+
+- Log_TCP_COMPLETE_ALL
+
+> what we are using is a part of log tcp complete structure, so in case of the user wants to get other fields' values the whole structure will be needed. In order to make users to customize which fields they want to parse, made some descriptions on each fields as well.
+
+- Retransmission Field change
+
+> Before, it was Number of retransmitted segments due to timeout expiration but what we need is the total number of retransmitted segments whatever reasons they have.
