@@ -2,7 +2,7 @@
 
 CONFIG = {
 	'host' 		: 'pc-170.calit2.optiputer.net',	#domain
-	'dbname' 	: 'network',				#name of DB
+	'dbname' 	: 'tstat',				#name of DB
 	'hostname' 	: 'pc-170',				#name of host(server)
 	'port' 		: 8086,					#port number for influxDB
 	'path'		: '/export/data',			#path where log files are

@@ -59,6 +59,8 @@
 5. open conf.py -> type username, password
 6. run main.py with ./main.py
 
+Follow step 1 ~ 5 when first running this program, from second time just step 6 will do.
+
 
 ## Configuration for other env
 
