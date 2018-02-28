@@ -53,7 +53,9 @@
 1. run setup_admin.sh (it will setup authentication by making admin user)
 2. goto chronograf webpage -> InfluxDB Admin -> Users (check if there is an admin user have created)
 3. open InfluxDB.conf -> Search [http] -> uncomment auth-enabled -> change the value from false to true (default is false)
+> /etc/influxdb/influxdb.conf
 4. open telegraf.conf -> Search [Output] -> InfluxDB -> set username = [admin username that you made], password = [admin password that you set]
+> /etc/telegraf/telegraf.conf
 5. open conf.py -> type username, password
 6. run main.py with ./main.py
 

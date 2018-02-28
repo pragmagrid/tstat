@@ -117,7 +117,7 @@
 
 ## 2018 FEB WEEK 04
 
-#### updated
+#### Updated
 
 - Log_TCP_COMPLETE_ALL
 
@@ -126,3 +126,7 @@
 - Retransmission Field change
 
 > Before, it was Number of retransmitted segments due to timeout expiration but what we need is the total number of retransmitted segments whatever reasons they have.
+
+- Optimization for Directory search
+
+> Previously, it search all the directories inside 'some.out' folders which is a waste of time and performance. Now it does not search all the directories and it reads directories in order.
