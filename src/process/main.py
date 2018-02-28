@@ -26,9 +26,14 @@ def searchfile():
 
                 out_dir_path = path + "/" + out_dir
 
-                for filename in os.listdir(out_dir_path):
+                if out_dir_path in list_written_directories:
+                    print(out_dir_path + ' : already in here')
 
-                    if filename == 'log_tcp_complete':
+                else:
+
+                    for filename in os.listdir(out_dir_path):
+
+                        if filename == 'log_tcp_complete':
 
                             file_path = out_dir_path + "/" + filename
 

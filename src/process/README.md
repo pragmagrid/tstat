@@ -82,7 +82,7 @@ If there are more than a word, naming will be word1_word2.
 
 progress.txt will be made as you run this program.
 
-In progress.txt the directories that have been insulted properly into the InfluxDB will be recorded so that there are no waste of process.
+In progress.txt the directories that have been processed properly into the InfluxDB will be recorded so that there are no waste of process.
 
 ## Useful Reference
 
