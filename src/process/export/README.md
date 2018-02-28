@@ -4,6 +4,8 @@ Shell Script to export dashboard in form of JSON file from certain chronograph s
 
 Open with VIM/VI and configure server address , name of file to be saved on your need.
 
+When JSON file is made make sure delete first few lines which does not seem like JSON format.
+
 
 ## Import.sh
 

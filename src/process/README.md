@@ -53,9 +53,13 @@
 1. run setup_admin.sh (it will setup authentication by making admin user)
 2. goto chronograf webpage -> InfluxDB Admin -> Users (check if there is an admin user have created)
 3. open InfluxDB.conf -> Search [http] -> uncomment auth-enabled -> change the value from false to true (default is false)
+> /etc/influxdb/influxdb.conf
 4. open telegraf.conf -> Search [Output] -> InfluxDB -> set username = [admin username that you made], password = [admin password that you set]
+> /etc/telegraf/telegraf.conf
 5. open conf.py -> type username, password
 6. run main.py with ./main.py
+
+Follow step 1 ~ 5 when first running this program, from second time just step 6 will do.
 
 
 ## Configuration for other env
@@ -78,7 +82,7 @@ If there are more than a word, naming will be word1_word2.
 
 progress.txt will be made as you run this program.
 
-In progress.txt the directories that have been insulted properly into the InfluxDB will be recorded so that there are no waste of process.
+In progress.txt the directories that have been processed properly into the InfluxDB will be recorded so that there are no waste of process.
 
 ## Useful Reference
 

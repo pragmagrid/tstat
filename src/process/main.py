@@ -20,36 +20,30 @@ def searchfile():
 
 
     #print(list_written_directories)
+    for out_dir in sorted(os.listdir(path)):
 
-    for root, dirs, files in os.walk(path):
+            if not out_dir.startswith("."):
 
-        for dirname in dirs:
-            ext = os.path.splitext(dirname)[1]
+                out_dir_path = path + "/" + out_dir
 
-            if ext == '.out':
-                full_dirname = os.path.join(path, dirname)
+                if out_dir_path in list_written_directories:
+                    print(out_dir_path + ' : already in here')
 
-                if full_dirname in list_written_directories:
-                    print(full_dirname + ' : already in here')
                 else:
 
-                    filenames = os.listdir(full_dirname)
-                    #list of files in current directory
-
-                    for filename in filenames:
+                    for filename in os.listdir(out_dir_path):
 
                         if filename == 'log_tcp_complete':
-                            full_filepath = os.path.join(full_dirname, filename)
-                            # print(full_filepath, full_dirname)
+
+                            file_path = out_dir_path + "/" + filename
 
                             r = run()
-                            r.fileread(full_filepath, full_dirname)
+                            r.fileread(file_path, out_dir_path)
 
                             total += r.total
                             total_err += r.total_err
 
                             analyze(r.total, r.total_err)
-
 
 def analyze(total, total_err):
     print('Total Number of Log process  : %d \nTotal Number of Err Occurred : %d' % (total, total_err))
