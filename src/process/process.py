@@ -1,52 +1,64 @@
-# -*- coding: utf-8 -*-
-"""Tutorial on using the InfluxDB client."""
+#!/opt/python/bin/python2.7
 
-import argparse
-import json
-from datetime import datetime
+import log_tcp_complete as tstat
+import time
+from influxDB_python import database
+import config
 
-from influxdb import InfluxDBClient
+class run:
 
+    total = 0
+    total_err = 0
 
-class database():
-    """database"""
+    def fileread(self, filename, dirname):
 
-    def __init__(self, host, port):
-        self.host = host
-        self.port = port
+        f = open(filename)
 
-    def insert(self, jsons):
-        """Instantiate a connection to the InfluxDB.
-        """
-        user = 'root'
-        password = 'root'
-        dbname = 'test'
-        query = 'select value from log_tcp_complete;'
-        current_time = datetime.utcnow().strftime('%Y-%m-%dT%H:%M:%SZ')
-        json_body = [
-            {
-                "measurement": "log_tcp_complete",
-                "tags": {
-                    "host": "server1",
-                    "region": "us-west"
-                },
-                "time": current_time,
-                "fields": {
-                }
-            }
-        ]
+        line = f.readline()
+        if line.startswith("#"):
+            # first line in the tstat tcp complete is not an actual data, it is just a header information.
+            line = f.readline()
+            self.total += 1
+            while len(line.strip()) > 0:
 
-        json_body[0]['fields'] = jsons
+                record = tstat.tstatrecord(line)
 
-        client = InfluxDBClient(self.host, self.port, user, password, dbname)
+                if record.err is not True:
+                    epoch = record.timestamp
+                    # if run.time_constraint(self, epoch) is True:
+                    run.interact(self, record, epoch)
+                    # else:
+                    #     print("time out")
+                else:
+                    # run.error_handle(self, record.err_code)
+                    self.total_err += 1
 
-        print("Create database: " + dbname)
-        client.create_database(dbname)
+                line = f.readline()
+                self.total += 1
 
-        print("Write points: {0}".format(json_body))
-        client.write_points(json_body)
+        f.close()
+        print("END")
 
-        print("Querying data: " + query)
-        result = client.query(query)
+        f = open(config.CONFIG['file_list_path']+"/progress.txt", 'a')
+        f.write(dirname+'\n')
+        f.close()
 
-        print("Result: {0}".format(result))
+    def interact(self, record, epoch):
+        record = record.__dict__
+        db = database(config.CONFIG['host'], config.CONFIG['port'])
+        db.insert(record, epoch)
+
+    def error_handle(self, code):
+        if code == 1:
+            print('Broken Log File')
+        elif code == 2:
+            print('Port No.22')
+        else:
+            print('Unknown Err')
+
+    def time_constraint(self, epoch):
+        current_time = float(time.time())
+        if (current_time - epoch) <= config.CONFIG['time_constraint']:
+            return True
+        else:
+            return False
