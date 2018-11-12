@@ -10,10 +10,10 @@ services:
   influxdb:
     image: influxdb:${INFLUXDB_VERSION}
     volumes:
-      - ./influxdb/storage:/var/lib/influxdb
       - ./influxdb/conf/influxdb.conf:/etc/influxdb/influxdb.conf:ro
+      - ./influxdb/storage:/var/lib/influxdb
     ports:
-      - "8086:8086"
+      - 8086:8086
 
   chronograf:
     image: chronograf:${CHRONOGRAF_VERSION}
@@ -23,17 +23,28 @@ services:
       INFLUXDB_URL: http://influxdb:8086
       KAPACITOR_URL: http://kapacitor:9092
     ports:
-      - "8888:8888"
+      - 8888:8888
 
   kapacitor:
     image: kapacitor:${KAPACITOR_VERSION}
     volumes:
-      - ./kapacitor/storage:/var/lib/kapacitor
       - ./kapacitor/conf/kapacitor.conf:/etc/kapacitor/kapacitor.conf:ro
+      - ./kapacitor/storage:/var/lib/kapacitor
     environment:
       KAPACITOR_HOSTNAME: kapacitor
       KAPACITOR_INFLUXDB_0_URLS_0: http://influxdb:8086
     links:
       - influxdb
     ports:
-      - "9092:9092"
+      - 9092:9092
+
+  grafana:
+    image: grafana/grafana:${GRAFANA_VERSION}
+    volumes:
+      - ./grafana/conf/custom.ini:/etc/grafana/grafana.ini
+      - ./grafana/storage:/var/lib/grafana
+    ports:
+      - 3000:3000
+    # environment:
+      # GF_SERVER_ROOT_URL: http://grafana.server.name
+      # GF_SECURITY_ADMIN_PASSWORD: ${GF_SECURITY_ADMIN_PASSWORD}
