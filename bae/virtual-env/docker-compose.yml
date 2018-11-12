@@ -1,0 +1,39 @@
+version: '3.0'
+
+services:
+
+  telegraf:
+    image: telegraf:${TELEGRAF_VERSION}
+    volumes:
+      - ./telegraf/conf/telegraf.conf:/etc/telegraf/telegraf.conf:ro
+
+  influxdb:
+    image: influxdb:${INFLUXDB_VERSION}
+    volumes:
+      - ./influxdb/storage:/var/lib/influxdb
+      - ./influxdb/conf/influxdb.conf:/etc/influxdb/influxdb.conf:ro
+    ports:
+      - "8086:8086"
+
+  chronograf:
+    image: chronograf:${CHRONOGRAF_VERSION}
+    volumes:
+      - ./chronograf/storage:/var/lib/chronograf
+    environment:
+      INFLUXDB_URL: http://influxdb:8086
+      KAPACITOR_URL: http://kapacitor:9092
+    ports:
+      - "8888:8888"
+
+  kapacitor:
+    image: kapacitor:${KAPACITOR_VERSION}
+    volumes:
+      - ./kapacitor/storage:/var/lib/kapacitor
+      - ./kapacitor/conf/kapacitor.conf:/etc/kapacitor/kapacitor.conf:ro
+    environment:
+      KAPACITOR_HOSTNAME: kapacitor
+      KAPACITOR_INFLUXDB_0_URLS_0: http://influxdb:8086
+    links:
+      - influxdb
+    ports:
+      - "9092:9092"
