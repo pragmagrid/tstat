@@ -9,7 +9,7 @@ services:
       - ./storage:/var/lib/grafana
     ports:
       - 3001:3000
-    container_name: pragama_grafana_2
+    container_name: pragma_grafana_2
     
 
 # volumes:

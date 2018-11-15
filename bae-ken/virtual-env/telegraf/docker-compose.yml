@@ -5,4 +5,4 @@ services:
     image: telegraf:${TELEGRAF_VERSION}
     volumes:
       - ./conf/telegraf.conf:/etc/telegraf/telegraf.conf:ro
-    container_name: pragama_telegraf
+    container_name: pragma_telegraf

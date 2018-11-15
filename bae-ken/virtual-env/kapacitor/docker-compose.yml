@@ -13,5 +13,5 @@ services:
       - influxdb
     ports:
       - 9092:9092
-    container_name: pragama_kapacitor
+    container_name: pragma_kapacitor
     
