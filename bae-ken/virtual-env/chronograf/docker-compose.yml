@@ -1,0 +1,9 @@
+chronograf:
+  image: chronograf:${CHRONOGRAF_VERSION}
+  volumes:
+    - ./chronograf/storage:/var/lib/chronograf
+  environment:
+    INFLUXDB_URL: http://influxdb:8086
+    KAPACITOR_URL: http://kapacitor:9092
+  ports:
+    - 8888:8888

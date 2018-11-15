@@ -1,0 +1,7 @@
+influxdb:
+  image: influxdb:${INFLUXDB_VERSION}
+  volumes:
+    - ./influxdb/conf/influxdb.conf:/etc/influxdb/influxdb.conf:ro
+    - ./influxdb/storage:/var/lib/influxdb
+  ports:
+    - 8086:8086
