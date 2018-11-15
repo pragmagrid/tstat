@@ -10,6 +10,7 @@ services:
     ports:
       - 3001:3000
     container_name: pragma_grafana_2
+    network_mode: "host"
     
 
 # volumes:

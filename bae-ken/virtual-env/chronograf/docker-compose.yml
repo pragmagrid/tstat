@@ -11,4 +11,5 @@ services:
     ports:
       - 8888:8888
     container_name: pragama_chronograf
+    network_mode: "host"
     

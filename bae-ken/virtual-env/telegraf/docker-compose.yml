@@ -6,3 +6,4 @@ services:
     volumes:
       - ./conf/telegraf.conf:/etc/telegraf/telegraf.conf:ro
     container_name: pragma_telegraf
+    network_mode: "host"

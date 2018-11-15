@@ -12,4 +12,5 @@ services:
     ports:
       - 9092:9092
     container_name: pragma_kapacitor
+    network_mode: "host"
     
