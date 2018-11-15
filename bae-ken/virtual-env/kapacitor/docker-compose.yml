@@ -1,0 +1,15 @@
+version: "3.0"
+
+services: 
+  kapacitor:
+    image: kapacitor:${KAPACITOR_VERSION}
+    volumes:
+      - ./conf/kapacitor.conf:/etc/kapacitor/kapacitor.conf:ro
+      - ./storage:/var/lib/kapacitor
+    environment:
+      KAPACITOR_HOSTNAME: kapacitor
+      KAPACITOR_INFLUXDB_0_URLS_0: http://influxdb:8086
+    links:
+      - influxdb
+    ports:
+      - 9092:9092

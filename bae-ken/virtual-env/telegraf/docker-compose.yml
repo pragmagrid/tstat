@@ -1,0 +1,7 @@
+version: "3.0"
+
+services: 
+  telegraf:
+    image: telegraf:${TELEGRAF_VERSION}
+    volumes:
+      - ./conf/telegraf.conf:/etc/telegraf/telegraf.conf:ro
