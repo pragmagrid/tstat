@@ -8,7 +8,7 @@ services:
       # - grafana_volume:/var/lib/grafana
       - ./storage:/var/lib/grafana
     ports:
-      - 3001:3000
+      - 3001:3001
     container_name: pragma_grafana_2
     network_mode: "host"
     
