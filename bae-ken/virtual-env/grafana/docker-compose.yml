@@ -2,6 +2,9 @@ grafana:
   image: grafana/grafana:${GRAFANA_VERSION}
   volumes:
     - ./conf/custom.ini:/etc/grafana/grafana.ini
-    - ./storage:/var/lib/grafana
+    - grafana_volume:/var/lib/grafana
+    # - ./storage:/var/lib/grafana
   ports:
     - 3000:3000
+
+volumes: grafana_volume:
