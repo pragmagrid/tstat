@@ -7,4 +7,5 @@ grafana:
   ports:
     - 3000:3000
 
-volumes: grafana_volume:
+volumes:
+  grafana_volume:
