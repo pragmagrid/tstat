@@ -8,8 +8,8 @@ services:
       - grafana_volume:/var/lib/grafana
       # - ./storage:/var/lib/grafana
     ports:
-      - 3000:3000
-    container_name: pragama_grafana
+      - 3001:3000
+    container_name: pragama_grafana_2
     
 
 volumes:

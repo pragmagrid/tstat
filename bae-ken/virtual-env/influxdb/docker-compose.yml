@@ -8,3 +8,5 @@ services:
       - ./influxdb/storage:/var/lib/influxdb
     ports:
       - 8086:8086
+    container_name: pragama_influxdb
+    
