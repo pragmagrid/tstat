@@ -31,7 +31,7 @@
 
 	RESULT: It takes 1m 34s to process data from 2017_12_07 to 2018_02_21
 		  
-> - [x] Reduce the time to bring data on Chronograf dashboard
+- [x] Reduce the time to bring data on Chronograf dashboard
 
 	Indicate the exact time in query statements on the dashboards.
 	
