@@ -29,7 +29,7 @@
 	
 	As seeing the above description of process.py, there's no need to convert data's type. So, just store data as string type.
 
-	RESULT: It takes 1m 34s to process data from 2017_12_07 to 2018_02_21
+RESULT: It takes 1m 34s to process data from 2017_12_07 to 2018_02_21
 		  
 - [x] Reduce the time to bring data on Chronograf dashboard
 
@@ -37,6 +37,7 @@
 	
 	Visualize the data in groups by sever's IP address.
 
+RESULT: It takes less than 2s to load dashboards.
 #### Things to do next week
 
 - Distribute how to process errors more exact. 
