@@ -2,7 +2,6 @@
 
 import log_tcp_complete as tstat
 import time
-from influxDB_python import database
 import config
 
 class run:
@@ -10,7 +9,7 @@ class run:
     total = 0
     total_err = 0
 
-    def fileread(self, filename, dirname):
+    def fileread(self, filename, dirname, db):
 
         f = open(filename)
 
@@ -18,35 +17,39 @@ class run:
         if line.startswith("#"):
             # first line in the tstat tcp complete is not an actual data, it is just a header information.
             line = f.readline()
-            self.total += 1
-            while len(line.strip()) > 0:
 
+            #curl_insert is inserting commands to influxDB with HTTP API
+            curl_insert = "curl -i -XPOST 'http://"+config.CONFIG['host']+":"+str(config.CONFIG['port'])+"/write?db="+config.CONFIG['dbname']+"' -u "+config.CONFIG['id']+":"+config.CONFIG['password']+" --data-binary '"
+            while True:
+
+                if not line:
+                    break
                 record = tstat.tstatrecord(line)
 
                 if record.err is not True:
-                    epoch = record.timestamp
-                    # if run.time_constraint(self, epoch) is True:
-                    run.interact(self, record, epoch)
-                    # else:
-                    #     print("time out")
+                    #format of timstamp in log_tcp_complete is 'xxx~.xxxx'
+                    #The valid format of epoch time in influxDb is 19 digits
+                    epoch = (record.timestamp).replace(".","")
+                    payload = record.s2c_payload
+                    window = record.server_window_scale
+                    rtt = record.s2c_average_round_trip_time
+                    duration = record.completion_duration_time
+                    retransmission = record.s2c_retransmission
+
+                    curl_insert += 'log_tcp_complete,host='+record.sip+' s2c_payload='+payload+',s2c_retransmission='+retransmission+',server_window_scale='+window+',s2c_average_round_trip_time='+rtt+',completion_duration_time='+duration+' '+epoch+'\n'
+                    self.total += 1
                 else:
-                    # run.error_handle(self, record.err_code)
                     self.total_err += 1
 
                 line = f.readline()
                 self.total += 1
 
-        f.close()
-        print("END")
-
-        f = open(config.CONFIG['file_list_path']+"/progress.txt", 'a')
-        f.write(dirname+'\n')
+	    curl_insert += "' >/dev/null 2>&1"
+            run.interact(self, curl_insert, db)
         f.close()
 
-    def interact(self, record, epoch):
-        record = record.__dict__
-        db = database(config.CONFIG['host'], config.CONFIG['port'])
-        db.insert(record, epoch)
+    def interact(self, curl_str, db):
+        db.insert(curl_str)
 
     def error_handle(self, code):
         if code == 1:
@@ -55,10 +58,3 @@ class run:
             print('Port No.22')
         else:
             print('Unknown Err')
-
-    def time_constraint(self, epoch):
-        current_time = float(time.time())
-        if (current_time - epoch) <= config.CONFIG['time_constraint']:
-            return True
-        else:
-            return False

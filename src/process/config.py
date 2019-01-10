@@ -9,5 +9,5 @@ CONFIG = {
 	'id'		: '',					#id for database auth
 	'password'	: '',					#pwd for database auth
 	'time_constraint'	: 2592000,			#2592000 = 1 month in seconds
-	'file_list_path'	: '/export/home/minsung/python'	#path to store the progress
+	'file_list_path'	: '/export/home/chojpsh1/python'	#path to store the progress
 }
