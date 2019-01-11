@@ -37,7 +37,7 @@ RESULT: It takes 1m 34s to process data from 2017_12_07 to 2018_02_21
 	
 	Visualize the data in groups by sever's IP address.
 
-RESULT: It takes less than 2s to load dashboards.
+RESULT: It takes less than 2s to load data in 5 columns from 2017_12_07 to 2018_02_21 on dashboards.
 #### Things to do next week
 
 - Distribute how to process errors more exact. 
