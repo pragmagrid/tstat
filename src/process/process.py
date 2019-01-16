@@ -17,7 +17,7 @@ class run:
         if line.startswith("#"):
             # first line in the tstat tcp complete is not an actual data, it is just a header information.
             line = f.readline()
-
+	    self.total = 1
             #curl_insert is inserting commands to influxDB with HTTP API
             curl_insert = "curl -i -XPOST 'http://"+config.CONFIG['host']+":"+str(config.CONFIG['port'])+"/write?db="+config.CONFIG['dbname']+"' -u "+config.CONFIG['id']+":"+config.CONFIG['password']+" --data-binary '"
             while True:
@@ -36,13 +36,14 @@ class run:
                     duration = record.completion_duration_time
                     retransmission = record.s2c_retransmission
 
-                    curl_insert += 'log_tcp_complete,host='+record.sip+' s2c_payload='+payload+',s2c_retransmission='+retransmission+',server_window_scale='+window+',s2c_average_round_trip_time='+rtt+',completion_duration_time='+duration+' '+epoch+'\n'
-                    self.total += 1
+                    curl_insert += 'log_tcp_complete,host='+record.sip+' s2c_payload='+payload+',s2c_retransmission='+retransmission+',server_window_scale='+window+',completion_duration_time='+duration+',s2c_average_round_trip_time='+rtt+' '+epoch+'\n'
                 else:
-                    self.total_err += 1
+                    if record.err_code == 1:
+                        print('line number: '+str(self.total+1)+' in '+filename+'\n')
+                        self.total_err += 1
 
-                line = f.readline()
                 self.total += 1
+                line = f.readline()
 
 	    curl_insert += "' >/dev/null 2>&1"
             run.interact(self, curl_insert, db)

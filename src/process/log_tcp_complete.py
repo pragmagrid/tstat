@@ -15,19 +15,19 @@ class tstatrecord:
 
         if len(t) < 130:
             self.err = True
+            self.err_code = 1
+            print("Length is less than 130")
             return
 
         #port numbers
         self.client_port          = int(t[1])       # Client/Server TCP port - TCP port addresses for the client/server
         if self.client_port == 22:
             self.err = True
-	    self.err_code = 1
             return
 
         self.server_port          = int(t[15])           # Client/Server TCP port - TCP port addresses for the client/server
         if self.server_port == 22:
             self.err = True
-	    self.err_code = 2
             return
 
         self.timestamp = t[28]        # First time (ms) Flow first packet since first segment ever
