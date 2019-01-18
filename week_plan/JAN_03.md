@@ -22,7 +22,7 @@ RESULT : There are two lines that the length is short in the log_tcp_complete fi
 
 	- Test it with temporary data in influxDB. I added the data source which is connected with local influxDB and created a dashboard that extract some value from data the source.
 
-	![test_grafana](/img/test.png)
+	![test_grafana](./img/test.png)
 
 #### Things to do next week
 
