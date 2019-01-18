@@ -16,9 +16,15 @@
 
 RESULT : There are two lines that the length is short in the log_tcp_complete files from 2017_12_07 to 2018_02_21.
  
-- [ ] Study how to use Grafana.
+- [x] Study how to use Grafana.
+
+	- First, I try to install and use Grafana on local (Mac). I referenced the Grafana site(https://grafana.com/grafana/download). I installed Grafana in local with brew command. And I connected to port number 3000.
+
+	- Test it with temporary data in influxDB. I added the data source which is connected with local influxDB and created a dashboard that extract some value from data the source.
+
+	![test_grafana](/img/test.png)
 
 #### Things to do next week
 
-- Move to Grafana.
+- move to Grafana.
 - Study how increase security when accessing Grafana.
