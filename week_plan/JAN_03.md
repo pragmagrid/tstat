@@ -26,5 +26,5 @@ RESULT : There are two lines that the length is short in the log_tcp_complete fi
 
 #### Things to do next week
 
-- move to Grafana.
+- Move to Grafana.
 - Study how increase security when accessing Grafana.
