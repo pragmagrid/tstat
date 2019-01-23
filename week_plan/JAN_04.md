@@ -7,24 +7,20 @@
 	- Install Grafana with Grafana documentation reference.(http://docs.grafana.org/installation/rpm/)
 	Download the rpm through wget command and run the rpm. Then, It is displayed as the below.
 
-	<pre><code>
-	Preparing...                ########################################### [100%]
+	<pre><code>Preparing...                ########################################### [100%]
 	   1:grafana                ########################################### [100%]
 	### NOT starting grafana-server by default on bootup, please execute
  	 sudo /sbin/chkconfig --add grafana-server
 	### In order to start grafana-server, execute
 	 sudo service grafana-server start
-	POSTTRANS: Running script
-	</pre></code>
+	POSTTRANS: Running script</pre></code>
 
 	Type the two commands in order, and run Grafana (sudo service grafana-server start).
 
 	- There was some problem with using Grafana from external.
 	I used 'UCSD-GUEST' WiFi. In Chronograf, It worked well although I tried to directly access host's port number 8080. But, When I finished installing Grafana and tried to access to port number 3000 from web browser, It occured an error which is 'ERR_CONNECTION_TIMED_OUT'.
 	It needs to do ssh port forwarding. I set my local's port number 3000 to pc-170.calit2.optiputer.net's port number 3000.
-	<pre><code>
-	ssh -L 3000:localhost:3000 chojpsh1@pc-170.calit2.optiputer.net
-	</pre></code>
+	<pre><code>ssh -L 3000:localhost:3000 chojpsh1@pc-170.calit2.optiputer.net</pre></code>
 
 	Then, I connect 'localhost:3000' from web browser and It works well with accessing pc-170.calit2.optiputer.net:3000.
 
@@ -40,7 +36,6 @@
 
 	- Use Google OAuth 2.0
 	There's no need to sign up in Grafana and type directly id and password of google, So, Google OAuth 2.0 provides safe usage.How to use Google OAuth 2.0 with Grafana is described in Grafana documentation(http://docs.grafana.org/auth/google/).
-
 	First, I'm issued a client key and ID for Google OAuth. The Authorized Javascript Origins is 'http://pc-170.calit2.optiputer.net:3000'. And the Authorized Redirect URLs is 'http://pc-170.calit2.optiputer.net:3000/login/google'.
 
 #### Things to do next week
