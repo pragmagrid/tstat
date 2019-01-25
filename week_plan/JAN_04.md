@@ -42,10 +42,14 @@
 	
 	There's no need to sign up in Grafana and type directly id and password of google, So, Google OAuth 2.0 provides safe usage.How to use Google OAuth 2.0 with Grafana is described in Grafana documentation(http://docs.grafana.org/auth/google/).
 	First, I'm issued a client key and ID for Google OAuth. The Authorized Javascript Origins is 'http://pc-170.calit2.optiputer.net:3000'. And the Authorized Redirect URLs is 'http://pc-170.calit2.optiputer.net:3000/login/google'. And the type is web application.
+	
+	- Why Google OAuth?
+	
+	If I use Google OAuth, I don't have to create a new account for new user. It decides user's access via Google information. So, the new user doesn't have to sign up for Grafana and I don't need to check one by one. But, I'll check that I can pick out the unreliable user with Google OAuth, too.
 
 	![set_oauth](./img/set_oauth.png)
 
 #### Things to do next week
 
-- Restrict access if user is not allowed.
+- Restrict access if user is not allowed (Can It be with Google OAuth?).
 - Measure and visualize performance which is calculated with data in log_tcp_complete file.
