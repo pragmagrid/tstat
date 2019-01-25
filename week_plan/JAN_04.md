@@ -36,12 +36,14 @@
 
 	![grafana_result](./img/grafana_done.png)	
 
-- [ ] Study how to increase security when accessing Grafana.
+- [x] Study how to increase security when accessing Grafana.
 
 	- Use Google OAuth 2.0
 	
 	There's no need to sign up in Grafana and type directly id and password of google, So, Google OAuth 2.0 provides safe usage.How to use Google OAuth 2.0 with Grafana is described in Grafana documentation(http://docs.grafana.org/auth/google/).
-	First, I'm issued a client key and ID for Google OAuth. The Authorized Javascript Origins is 'http://pc-170.calit2.optiputer.net:3000'. And the Authorized Redirect URLs is 'http://pc-170.calit2.optiputer.net:3000/login/google'.
+	First, I'm issued a client key and ID for Google OAuth. The Authorized Javascript Origins is 'http://pc-170.calit2.optiputer.net:3000'. And the Authorized Redirect URLs is 'http://pc-170.calit2.optiputer.net:3000/login/google'. And the type is web application.
+
+	![set_oauth](./img/set_oauth.png)
 
 #### Things to do next week
 
