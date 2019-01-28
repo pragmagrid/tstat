@@ -2,10 +2,13 @@
 
 #### Things to do
 
-- [ ] Restric access if user is not allowed.
+- [ ] View the dashboard without login.
 
-- [ ] Measure and visualize performance which is calculated with data in log_tcp_complete file.
+- [ ] Remove the 'log_tcp_complete.name of data' from graph variable.
+
+- [ ] Modify the process.py to insert data about client to influxDB.
 
 #### Things to do next week
 
-- Modify README.md and push to master.
+- Divide the graphs by host and port of server and client.
+- Make user can view the graph to select a host or port.
