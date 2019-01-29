@@ -35,7 +35,15 @@ RESULT: When I access to 'localhost:3000', I can see the Main Org's dashboard. I
 
 - [ ] Remove the 'log_tcp_complete.name of data' from graph variable.
 
-- [ ] Modify the process.py to insert data about client to influxDB.
+- [x] Modify the process.py to insert data about client to influxDB.
+
+	- log_tcp_complete.py
+
+	Add more data(the ip address of client, client's window scale, c2s_retransmission, c2s_payload and client's average RTT) in self structure.
+
+	- process.py
+
+	Add the code that extract client's data from log_tcp_complete structure. And modify the curl_insert variable to insert the data of server and client to influxDB with HTTP API simultaneously. I tried to divide the measurement into server and client and to insert the data of server and client to each measurement. However, it took twice as long as it eventually required double performance.(3m 37s) So, I just insert the data of server and client to the same measurement and it took 1m 30s.
 
 #### Things to do next week
 
