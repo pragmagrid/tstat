@@ -33,7 +33,22 @@ RESULT: When I access to 'localhost:3000', I can see the Main Org's dashboard. I
 
 ![access_capture](./img/access_capture.png)
 
-- [ ] Remove the 'log_tcp_complete.name of data' from graph variable.
+- [x] Remove the 'log_tcp_complete.name of data' from graph variable.
+
+	- Add variable in dashboard.
+
+	Dashboard > Settings > Variables. You can add variable that may be the optional item in select box on dashboard. First, I add the server's 'host' as test. I want to see the graph about all hosts or the selected hosts. So, I checked on 'Multi-value' and 'Include All option'. The other setting that I did is below picture.
+
+	![setting_variable](./img/setting_variable.png)
+
+	- Modify query.
+
+	Then, I modified the query. I removed the 'GROUP BY host' and replace it with 'ALIAS BY $tag_s_host'. 's_host' is key name of server's host which is stored in influxDB. When I wrote 'GROUP BY host' in query, the hosts were displayed with DB's table name and data aggregation function (MEAN, FIELD, etc). That was too long, so when use 'ALIAS BY $tag_s_host', just can only see the server's ip address. Previously, I added server's host as the variable so, I can select the host which I want to see. To do so, write 's_host=~/^host$/' in WHERE command (The word which appended between ^ and $ is the name of tag that set in Variables page).  The detail query is below.
+
+	![detail_query](./img/detail_query.png)
+
+RESULT
+![shorten_name](./img/shorten_name.png)
 
 - [x] Modify the process.py to insert data about client to influxDB.
 
@@ -49,3 +64,4 @@ RESULT: When I access to 'localhost:3000', I can see the Main Org's dashboard. I
 
 - Divide the graphs by host and port of server and client.
 - Make user can view the graph to select a host or port.
+- Fix the bug that all data isn't stored in influxDB completely (Maybe I'll do it until february second week).
