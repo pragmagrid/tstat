@@ -15,10 +15,6 @@ class database():
 
         if "error" in is_exist: #"error" in result string means that there is no database named dbname
             os.system('curl -XPOST http://'+host+':'+str(port)+'/query -u '+user+':'+pwd+' --data-urlencode "q=CREATE DATABASE '+dbname+'" >/dev/null 2>&1')
-            self.is_exist = 0
-        else:
-            print('Database is already exists')
-            self.is_exist = 1
 
     def insert(self, curl_str):
         run_curl = os.system(curl_str) #run the curl command 

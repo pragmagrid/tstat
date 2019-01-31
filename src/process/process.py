@@ -14,7 +14,6 @@ class run:
         base_curl = "curl -i -XPOST 'http://"+config.CONFIG['host']+":"+str(config.CONFIG['port'])+"/write?db="+config.CONFIG['dbname']+"' -u "+config.CONFIG['id']+":"+config.CONFIG['password']+" --data-binary '"
 
         f = open(filename)
-
         line = f.readline()
 
         if line.startswith("#"):
@@ -23,6 +22,7 @@ class run:
 	    self.total = 1
             #curl_insert is inserting commands with server's information to influxDB with HTTP API
             curl_insert = base_curl
+
             while True:
 
                 if not line:
@@ -46,9 +46,12 @@ class run:
                     c_port = record.client_port
 
                     curl_insert += 'log_tcp_complete,s_host='+record.sip+',s_port='+s_port+',c_host='+record.cip+',c_port='+c_port+' s2c_payload='+s_payload+',s2c_retransmission='+s_retransmission+',server_window_scale='+s_window+',completion_duration_time='+duration+',s2c_average_round_trip_time='+s_rtt+',c2s_retransmission='+c_retransmission+',client_window_scale='+c_window+',c2s_average_round_trip_time='+c_rtt+' '+epoch+'\n'
+                    
                 else:
                     if record.err_code == 1:
-                        print('line number: '+str(self.total+1)+' in '+filename+'\n')
+                        progress_file = open(config.CONFIG['file_list_path']+"/progress.txt", 'a')
+                        progress_file.write('line number: '+str(self.total+1)+' in '+filename+'\n')
+                        progress_file.close()
                         self.total_err += 1
                 
                 self.total += 1
