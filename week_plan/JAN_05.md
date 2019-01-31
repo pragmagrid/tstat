@@ -60,10 +60,14 @@ RESULT
 
 	Add the code that extract client's data from log_tcp_complete structure. And modify the curl_insert variable to insert the data of server and client to influxDB with HTTP API simultaneously. I tried to divide the measurement into server and client and to insert the data of server and client to each measurement. However, it took twice as long as it eventually required double performance.(3m 37s) So, I just insert the data of server and client to the same measurement and it took 1m 30s.
 
-- [ ] Can set the start and end file that will be processed in config.py.
+- [x] Can set the start and end file that will be processed in config.py.
 
-- [ ] Can restore the data for a period previously stored in influxDB.
+	In config.py, there are two sections to be written added. When user write the log directory's name at those and run the tstat_to_influx.py, the program processes only the log files from start_file to end_file. After the program exists, the line number and file name that occurs error and the range which is processed are recorded in progress.txt.
 
+- [x] Can restore the data for a period previously stored in influxDB.
+
+	Follow the basic rule of influxDB, if the data insert again at the time which is previously stored in DB, influxDB just update the data at that time. For examples, I inserted some data to 'test' measurement at special time with query command(insert test,tag=1 value=12,value2=234 1505799797664800000). And if I insert some data at that time again with query command(insert test,tag=1 value=34,value2=564 1505799797664800000), then the data are just updated. So, in this situation, if run select query(select * from test where time=1505799797664800000), there are just one result come out not including previous data. The 'value' is 34 and the 'value2' is 564.
+	
 #### Things to do next week
 
 - Divide the graphs by server and client.
