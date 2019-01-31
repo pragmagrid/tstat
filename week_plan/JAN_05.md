@@ -60,8 +60,12 @@ RESULT
 
 	Add the code that extract client's data from log_tcp_complete structure. And modify the curl_insert variable to insert the data of server and client to influxDB with HTTP API simultaneously. I tried to divide the measurement into server and client and to insert the data of server and client to each measurement. However, it took twice as long as it eventually required double performance.(3m 37s) So, I just insert the data of server and client to the same measurement and it took 1m 30s.
 
+- [ ] Can set the start and end file that will be processed in config.py.
+
+- [ ] Can restore the data for a period previously stored in influxDB.
+
 #### Things to do next week
 
-- Divide the graphs by host and port of server and client.
+- Divide the graphs by server and client.
 - Make user can view the graph to select a host or port.
-- Fix the bug that all data isn't stored in influxDB completely (Maybe I'll do it until february second week).
+- Fix the bug that all data isn't stored in influxDB completely.
