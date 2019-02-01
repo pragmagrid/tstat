@@ -1,4 +1,4 @@
-## 2019 JAN WEEK 02
+## 2019 JAN WEEK SECOND
 
 #### Things to do
 
