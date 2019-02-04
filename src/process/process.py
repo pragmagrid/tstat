@@ -45,7 +45,8 @@ class run:
                     s_port = record.server_port
                     c_port = record.client_port
 
-                    curl_insert += 'log_tcp_complete,s_host='+record.sip+',s_port='+s_port+',c_host='+record.cip+',c_port='+c_port+' s2c_payload='+s_payload+',s2c_retransmission='+s_retransmission+',server_window_scale='+s_window+',completion_duration_time='+duration+',s2c_average_round_trip_time='+s_rtt+',c2s_retransmission='+c_retransmission+',client_window_scale='+c_window+',c2s_average_round_trip_time='+c_rtt+' '+epoch+'\n'
+                    curl_insert += 'server,host='+record.sip+',port='+s_port+' payload='+s_payload+',retransmission='+s_retransmission+',window_scale='+s_window+',completion_duration_time='+duration+',average_round_trip_time='+s_rtt+' '+epoch+'\n'
+		    curl_insert += 'client,host='+record.cip+',port='+c_port+' payload='+c_payload+',retransmission='+c_retransmission+',window_scale='+c_window+',completion_duration_time='+duration+',average_round_trip_time='+c_rtt+' '+epoch+'\n'
                     
                 else:
                     if record.err_code == 1:
