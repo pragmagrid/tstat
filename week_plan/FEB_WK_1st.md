@@ -22,9 +22,11 @@
 RESULT: I stored the data from 2018_01_05_19_27 to 2018_02_05_20_40 as test.
 
 	- Server
+	
 	![server](./img/server.png)
 
 	-Client
+	
 	![client](./img/client.png)
 	 	
 - [ ] Make user can view the graph to select a host or port.
