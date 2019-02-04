@@ -33,4 +33,5 @@ RESULT: I stored the data from 2018_01_05_19_27 to 2018_02_05_20_40 as test.
 #### Things to do next week
 
 - Check that bug is fixed completely.
-- Pull & Request to master branch. 
+- Rewrite the README.md file.
+- Pull & Request to master branch.
