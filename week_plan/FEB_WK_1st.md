@@ -51,6 +51,8 @@ RESULT: The below picture visualized just a few data.
 
 - [ ] Fix the bug that all data isn't stored in influxDB completely.
 
+	Move to 'Things to do next week'.
+
 #### Things to do next week
 
 - Check that bug is fixed completely.
