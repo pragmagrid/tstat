@@ -20,6 +20,7 @@
 RESULT: I divided the all log files into 4 parts.
 
 	Time to process from 2017_12_07_13_54.out to 2017_12_22_16_57.out (Total 166,248 data lines) -> 02:03
+	Time to process from 2017_12_22_17_57.out to 2018_01_06_22_18.out (Total 144,252 data lines) -> 01:52
 	Time to process from 2018_01_06_23_20.out to 2018_01_22_03_42.out (Total 219,547 data lines) -> 02:49
 	Time to process from 2018_01_22_04_44.out to 2018_02_06_09_10.out (Total 156,119 data lines) -> 02:05
 	Time to process from 2018_02_06_10_14.out to 2018_02_21_13_38.out (Total 182,949 data lines) -> 02:24
