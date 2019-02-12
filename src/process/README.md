@@ -6,19 +6,15 @@
 
 > For influxDB 8086 port used
 
-##### Chronograph 1.4
-
-> Instead of 8888 which is default, 8080 port has been used
-
 ## Setup
 
 ##### Start InfluxDB
 
 > /etc/rc.d/init.d/influxdb start
 
-##### Start Chronograph
+##### Start Grafana
 
-> /etc/rc.d/init.d/chronograf start
+> sudo service grafana-server start
 
 ## Classes
 
@@ -37,16 +33,12 @@
 
 ##### influxDB_python
 
-> This will be called by process, and in this class connection to the InfluxDB is set.
-> Here datas will be written into the connected InfluxDB.
+> This will be called by tstat_to_influx.py at initial, and in this class connection to the InfluxDB is set.
+> Here datas will be written into the connected InfluxDB via being called by process.py.
 
-##### main.py
+##### tstat_to_influx.py
 
-> main class which checks directories that have not processed and will call process.py for process
-
-##### setup_admin.sh
-
-> create admin user with input ID and PWD
+> main class which checks directories that start file and end file which are set in config.py and will call process.py for process
 
 ## Run
 
