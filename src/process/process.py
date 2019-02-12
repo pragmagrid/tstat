@@ -9,9 +9,11 @@ class run:
     total = 0
     total_err = 0
 
-    def fileread(self, filename, dirname, db):
+    #curl_insert is inserting commands with server's information to influxDB with HTTP API
+    curl_insert = "curl -i -XPOST 'http://"+config.CONFIG['host']+":"+str(config.CONFIG['port'])+"/write?db="+config.CONFIG['dbname']+"' -u "+config.CONFIG['id']+":"+config.CONFIG['password']+" --data-binary '"
+    count = 0
 
-        base_curl = "curl -i -XPOST 'http://"+config.CONFIG['host']+":"+str(config.CONFIG['port'])+"/write?db="+config.CONFIG['dbname']+"' -u "+config.CONFIG['id']+":"+config.CONFIG['password']+" --data-binary '"
+    def fileread(self, filename, dirname, db):
 
         f = open(filename)
         line = f.readline()
@@ -19,9 +21,7 @@ class run:
         if line.startswith("#"):
             # first line in the tstat tcp complete is not an actual data, it is just a header information.
             line = f.readline()
-	    self.total = 1
-            #curl_insert is inserting commands with server's information to influxDB with HTTP API
-            curl_insert = base_curl
+            self.total = 1
 
             while True:
 
@@ -45,9 +45,11 @@ class run:
                     s_port = record.server_port
                     c_port = record.client_port
 
-                    curl_insert += 'server,host='+record.sip+',port='+s_port+' payload='+s_payload+',retransmission='+s_retransmission+',window_scale='+s_window+',completion_duration_time='+duration+',average_round_trip_time='+s_rtt+' '+epoch+'\n'
-		    curl_insert += 'client,host='+record.cip+',port='+c_port+' payload='+c_payload+',retransmission='+c_retransmission+',window_scale='+c_window+',completion_duration_time='+duration+',average_round_trip_time='+c_rtt+' '+epoch+'\n'
-                    
+                    self.curl_insert += 'server,host='+record.sip+',port='+s_port+' payload='+s_payload+',retransmission='+s_retransmission+',window_scale='+s_window+',completion_duration_time='+duration+',average_round_trip_time='+s_rtt+' '+epoch+'\n'
+                    self.curl_insert += 'client,host='+record.cip+',port='+c_port+' payload='+c_payload+',retransmission='+c_retransmission+',window_scale='+c_window+',completion_duration_time='+duration+',average_round_trip_time='+c_rtt+' '+epoch+'\n'
+            
+                    self.count += 1
+        
                 else:
                     if record.err_code == 1:
                         progress_file = open(config.CONFIG['file_list_path']+"/progress.txt", 'a')
@@ -56,11 +58,22 @@ class run:
                         self.total_err += 1
                 
                 self.total += 1
+                
+                if self.count == 80:
+                    #This additional command is for not printing the result of process on console.
+                    self.curl_insert += "' >/dev/null 2>&1"
+                    run.interact(self, self.curl_insert, db)
+                    self.curl_insert = "curl -i -XPOST 'http://"+config.CONFIG['host']+":"+str(config.CONFIG['port'])+"/write?db="+config.CONFIG['dbname']+"' -u "+config.CONFIG['id']+":"+config.CONFIG['password']+" --data-binary '"
+                    self.count = 0
+
                 line = f.readline()
             
-           #This additional command is for not printing the result of process on console.
-	    curl_insert += "' >/dev/null 2>&1"
-            run.interact(self, curl_insert, db)
+            if self.count > 0:
+                self.curl_insert += "' >/dev/null 2>&1"
+                run.interact(self, self.curl_insert, db)
+                self.curl_insert = "curl -i -XPOST 'http://"+config.CONFIG['host']+":"+str(config.CONFIG['port'])+"/write?db="+config.CONFIG['dbname']+"' -u "+config.CONFIG['id']+":"+config.CONFIG['password']+" --data-binary '"
+                self.count = 0
+
         f.close()
 
     def interact(self, curl_str, db):
