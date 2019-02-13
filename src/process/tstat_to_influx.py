@@ -27,23 +27,23 @@ def searchfile():
     db = database(host, port, user, password, dbname)
     
     start_time = time.time() #If you want to measure the actual running time of this program, you can use it.
-
+    
     is_process = 0
+    r = run()
     for out_dir in sorted(os.listdir(path)):
         
         if out_dir == start:
             is_process = 1
         if is_process == 1:
             out_dir_path = path + "/" + out_dir
-            file_paht = out_dir_path + "/log_tcp_complete"
+            file_path = out_dir_path + "/log_tcp_complete"
             
-            r = run()
-            r.fileread(file_paht, out_dir_path, db)
+            r.fileread(file_path, out_dir, db)
 
-            total += r.total
-            total_err += r.total_err
         if out_dir == end:
             break
+    total = r.total
+    total_err = r.total_err
 
     analyze(total, total_err)
 
