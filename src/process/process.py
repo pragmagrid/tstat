@@ -13,7 +13,9 @@ class run:
     curl_insert = "curl -i -XPOST 'http://"+config.CONFIG['host']+":"+str(config.CONFIG['port'])+"/write?db="+config.CONFIG['dbname']+"' -u "+config.CONFIG['id']+":"+config.CONFIG['password']+" --data-binary '"
     count = 0
 
-    def fileread(self, filename, dirname, db):
+    def fileread(self, filename, dirname, db, progress_file):
+
+        progress_f = open(progress_file, 'a')
 
         f = open(filename)
         line = f.readline()
@@ -41,22 +43,16 @@ class run:
         
                 else:
                     if record.err_code == 1:
-                        progress_file = open(config.CONFIG['file_list_path']+"/progress.txt", 'a')
-                        progress_file.write('#line number: '+str(self.line+1)+' in '+filename+'\n Length is less than 130.\n')
-                        progress_file.close()
+                        progress_f.write('#line number: '+str(self.line+1)+' in '+filename+'\n Length is less than 130.\n')
                     elif record.err_code == 2:
-                        progress_file = open(config.CONFIG['file_list_path']+"/progress.txt", 'a')
-                        progress_file.write('#line number: '+str(self.line+1)+' in '+filename+'\n Port num of server is 22.\n')
-                        progress_file.close()
+                        progress_f.write('#line number: '+str(self.line+1)+' in '+filename+'\n Port num of server is 22.\n')
                     else :
-                        progress_file = open(config.CONFIG['file_list_path']+"/progress.txt", 'a')
-                        progress_file.write('#line number: '+str(self.line+1)+' in '+filename+'\n Port num of client is 22.\n')
-                        progress_file.close()
+                        progress_f.write('#line number: '+str(self.line+1)+' in '+filename+'\n Port num of client is 22.\n')
                     self.total_err += 1
                 
                 self.line += 1
                 
-                if self.count == 90:
+                if self.count == config.CONFIG['line_limit']:
                     #This additional command is for not printing the result of process on console.
                     run.interact(self, self.curl_insert, db)
 
@@ -65,7 +61,9 @@ class run:
             if dirname == config.CONFIG['end_file']:
                 run.interact(self, self.curl_insert, db)
 
+            run.interact(self, self.curl_insert, db)
         f.close()
+        progress_f.close()
 
     def interact(self, curl_str, db):
         self.total += (self.count/2)
