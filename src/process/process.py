@@ -57,11 +57,9 @@ class run:
                     run.interact(self, self.curl_insert, db)
 
                 line = f.readline()
-           
-            if dirname == config.CONFIG['end_file']:
+            
+            if self.count > 0:
                 run.interact(self, self.curl_insert, db)
-
-            run.interact(self, self.curl_insert, db)
         f.close()
         progress_f.close()
 
