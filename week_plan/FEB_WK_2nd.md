@@ -21,18 +21,6 @@ RESULT: I divided the all log files into 4 parts and the line_limit is 700.
 	Time to process from 2017_12 to 2018_01 (Total 583,400 data lines) -> 04:30
 	Time to process from 2018_01 to 2018_02 (Total 201,685 data lines) -> 01:34
 
-- [x] Make tstat_to_influx.py file to execute file.
-
-	- Just run one command, I can make a python script executable.
-
-	<pre><code>chmod 755 tstat_to_influx.py</pre></code>
-
-	Then, I can execute the python script as './tstat_to_influx.py beginning_date end_date'.
-	I create a 'prev_setting.sh' file. In this file, there are commands that initial python and main file(tstat_to_influx.py)'s authority setting.
-
-	<pre><code>module load opt-python
-	chmod 755 tstat_to_influx.py</pre></code>
-
 - [x] Beginning and end file can be set by input arguments.
 
 	- When execute tstat_to_influx.py, user can set the range of file to process by inputting arguments.
@@ -55,6 +43,19 @@ RESULT: I divided the all log files into 4 parts and the line_limit is 700.
 	For example, I create the influxDB_python structure named 'db' in process.py file and I want to use the insert curl statement.
 	<pre><code>curl_insert = db.insert_query % (config.CONFIG['host'], config.CONFIG['port'], config.CONFIG['dbname'], config.CONFIG['id'], config.CONFIG['password'])</pre></code>
 
+
+- [x] Make tstat_to_influx.py file to execute file.
+
+	- Just run one command, I can make a python script executable.
+
+	<pre><code>chmod 755 tstat_to_influx.py</pre></code>
+
+	Then, I can execute the python script as './tstat_to_influx.py beginning_date end_date'.
+	I create a 'prev_setting.sh' file. In this file, there are commands that initial python and main file(tstat_to_influx.py)'s authority setting.
+
+	<pre><code>module load opt-python
+	chmod 755 tstat_to_influx.py</pre></code>
+	
 - [ ] Rewrite the README.md file.
 
 - [ ] Pull & Request to master branch.
