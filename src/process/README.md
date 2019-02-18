@@ -20,7 +20,7 @@
 
 ##### config.py
 
-> For configurations
+> For configurationss
 
 ##### log_tcp_complete.py
 
@@ -29,40 +29,24 @@
 
 ##### process.py
 
-> with parsed object from log_tcp_complete, it process to InfluxDB
+> with parsed object from log_tcp_complete, it process to InfluxDB with HTTP API.
 
-##### influxDB_python
+##### influxDB_python.py
 
-> This will be called by tstat_to_influx.py at initial, and in this class connection to the InfluxDB is set.
+> This will be called by tstat_to_influx.py at initial, and check if database named by config.py exists in influxDB.
 > Here datas will be written into the connected InfluxDB via being called by process.py.
 
 ##### tstat_to_influx.py
 
-> main class which checks directories that start file and end file which are set in config.py and will call process.py for process
+> main class which checks directories that start file and end file which are set by input arguments at running and will call process.py for process
 
 ## Run
 
-1. run setup_admin.sh (it will setup authentication by making admin user)
-2. goto chronograf webpage -> InfluxDB Admin -> Users (check if there is an admin user have created)
-3. open InfluxDB.conf -> Search [http] -> uncomment auth-enabled -> change the value from false to true (default is false)
+1. open InfluxDB.conf -> Search [http] -> uncomment auth-enabled -> change the value from false to true (default is false)
 > /etc/influxdb/influxdb.conf
-4. open telegraf.conf -> Search [Output] -> InfluxDB -> set username = [admin username that you made], password = [admin password that you set]
-> /etc/telegraf/telegraf.conf
-5. open conf.py -> type username, password
-6. run main.py with ./main.py
+2. open conf.py -> type username, password and line_limit.
+3. run main.py with './tstat_to_influx.py beginning_time end_time'.
 
-Follow step 1 ~ 5 when first running this program, from second time just step 6 will do.
-
-
-## Configuration for other env
-
-Do not make change directly to the python files!
-
-To Change chronograf port number, unfortunately there is no external config file.
-
-Therefore set env PORT = 'whatever port number' or set the switch --port 'whatever port number'.
-
-Anything else except chronograph port, make change in config.py.
 
 ## Naming Schema
 
@@ -72,9 +56,9 @@ If there are more than a word, naming will be word1_word2.
 
 ## log Track
 
-progress.txt will be made as you run this program.
+progress_runningtime.txt will be made whenever you run this program.
 
-In progress.txt the directories that have been processed properly into the InfluxDB will be recorded so that there are no waste of process.
+In progress_runningtime.txt, the line number and error type are written.
 
 ## Useful Reference
 
