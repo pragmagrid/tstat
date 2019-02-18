@@ -38,15 +38,18 @@
 
 ##### tstat_to_influx.py
 
-> main class which checks directories that start file and end file which are set by input arguments at running and will call process.py for process
+> Main class which checks directories that start file and end file which are set by input arguments at running and will call process.py for process
 
 ## Run
 
-1. open InfluxDB.conf -> Search [http] -> uncomment auth-enabled -> change the value from false to true (default is false)
+1. Open InfluxDB.conf -> Search [http] -> uncomment auth-enabled -> change the value from false to true (default is false)
 > /etc/influxdb/influxdb.conf
-2. open conf.py -> type username, password and line_limit.
-3. run main.py with './tstat_to_influx.py beginning_time end_time'.
-
+2. Run 'ssh -L 3000:localhost:3000 user@host' to open grafana browser. It's port forwarding. The reason why this command need is written at tstat/week_plan/JAN_WK_4th.md.
+3. Open grafana page in browser -> Go to grafana page > Configuration > Server Admin > Orgs -> Set the organization name.
+4. Open grafana.conf -> Search anonymous -> Change the values follow tstat/week_plan/JAN_WK_5th.md -> Search auth.basic -> Change 'enabled' value false.
+> /etc/grafana/grafana.ini
+5. Open conf.py -> type username, password and line_limit.
+6. Run main.py with './tstat_to_influx.py beginning_time end_time'.
 
 ## Naming Schema
 
@@ -68,9 +71,10 @@ In progress_runningtime.txt, the line number and error type are written.
 
 > https://docs.influxdata.com/chronograf/v1.4/administration/managing-influxdb-users/#step-3-create-an-admin-user
 
-##### Chronograph pre-created Dashboards
+##### Access Grafana without login
 
-> https://github.com/influxdata/chronograf
+> http://docs.grafana.org/auth/overview/#anonymous-authentication
+
 
 ##### Tstat Structure
 
