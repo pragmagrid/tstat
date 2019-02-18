@@ -58,4 +58,8 @@ RESULT: I divided the all log files into 4 parts and the line_limit is 700.
 	
 - [ ] Rewrite the README.md file.
 
+	Move to next week.
+
 - [ ] Pull & Request to master branch.
+
+	Move to next week.
