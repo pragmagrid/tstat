@@ -8,9 +8,9 @@
   
 - [x] Pull & Request to master branch.
 
-- [ ] Skip the port number 22 in progress file.
+- [x] Skip the port number 22 in progress file.
 
-- [ ] Total number of processed lines is written in progress file.
+- [x] Total number of processed lines is written in progress file.
 
 - [ ] Fix query in Grafana.
 
@@ -27,3 +27,5 @@
 - [ ] Write example the run tstat_to_influx.py command in tstat/src/process/REAMD.md
 
 - [ ] Write how to create dashboard.
+
+- [ ] Process the exception when program run the curl command through 'os.system' function.
