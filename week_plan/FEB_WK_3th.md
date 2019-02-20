@@ -14,6 +14,8 @@
 
 - [ ] Fix query in Grafana.
 
+	I found it can be more efficient to use 'custom all value' in variable. When user select 'ALL' and suppose I set the 'custom all value' as 80 in port dashboard, then the dashboard display the data points where port number is 80. But, I can't adapt to it. I fix the query that it can extract the value of data just over than zero. And I understood there's no reason to use aggregation function but without aggregation function, I can't grouping the graphs. I have tried to fix it for a two weeks, but the result of searching on google is same.  
+
 - [x] Change 'classes' to 'python codes' in tstat/src/process/README.md
 
 - [x] 'Naming Schema' go in 'python codes' in tstat/src/process/README.md
