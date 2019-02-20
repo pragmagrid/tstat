@@ -44,11 +44,7 @@ class run:
                 else:
                     if record.err_code == 1:
                         progress_f.write('#line number: '+str(self.line+1)+' in '+filename+'\n Length is less than 130.\n')
-                    elif record.err_code == 2:
-                        progress_f.write('#line number: '+str(self.line+1)+' in '+filename+'\n Port num of server is 22.\n')
-                    else :
-                        progress_f.write('#line number: '+str(self.line+1)+' in '+filename+'\n Port num of client is 22.\n')
-                    self.total_err += 1
+                        self.total_err += 1
                 
                 self.line += 1
                 
@@ -57,7 +53,7 @@ class run:
                     run.interact(self, self.curl_insert, db)
 
                 line = f.readline()
-            
+           
             if self.count > 0:
                 run.interact(self, self.curl_insert, db)
         f.close()

@@ -25,3 +25,7 @@ class database():
 
     def insert(self, curl_str):
         run_curl = os.system(curl_str) #run the curl command
+        
+        if run_curl is not 0: #When the return value of os.system is 0, it means there's no error in running command.
+            print("The insert curl command occurs error! The command is below\n")
+            print(curl_str) 
