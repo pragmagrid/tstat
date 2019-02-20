@@ -51,16 +51,16 @@ Write a summary
 
 - What goals did I accomplish
 
-Shorten time to process and insert into DB than previous.
+   Shorten time to process and insert into DB than previous.
 
-Move the visualization platform to Grafana.
+   Move the visualization platform to Grafana.
 
-Learn how to write the documentation easy to view.
+   Learn how to write the documentation easy to view.
 
--What goals are left for the future
+- What goals are left for the future
 
-More exact know about aggregation function to display the data points in Grafana.
+   More exact know about aggregation function to display the data points in Grafana.
 
-Shorten time to process and insert into DB less than 3 min.
+   Shorten time to process and insert into DB less than 3 min.
 
-Visualize the data point by each port number group and each host ip address group. For example, group by 80, 100~199, 200~299, etc in port and by 110.xxx.xxx.000~110.xxx.xxx.255 and etc in host.
+   Visualize the data point by each port number group and each host ip address group. For example, group by 80, 100~199, 200~299, etc in port and by 110.xxx.xxx.000~110.xxx.xxx.255 and etc in host.
