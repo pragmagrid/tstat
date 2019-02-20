@@ -59,7 +59,8 @@ Links
    + store data with `InfluxDB`_
    + graph and visualize data with `Chronograph`_
    + use custom logic with `Kapacitor`_
-
+   
+#. `Using InfluxDB with Grafana`_
 
 Building
 ---------
@@ -180,6 +181,7 @@ See `Influxdata chronograf docs`_
 .. _Kapacitor : https://docs.influxdata.com/kapacitor/v1.4/introduction/getting_started/
 .. _influxdb-python : https://github.com/influxdata/influxdb-python
 .. _Influxdata chronograf docs : https://docs.influxdata.com/chronograf/v1.4/introduction/getting-started/
+.. _Using InfluxDB with Grafana: http://docs.grafana.org/features/datasources/influxdb/
 
 See `jq website`_ for jq info
 

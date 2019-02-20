@@ -1,0 +1,13 @@
+version: "3.0"
+
+services: 
+  influxdb:
+    image: influxdb:${INFLUXDB_VERSION}
+    volumes:
+      - ./conf/influxdb.conf:/etc/influxdb/influxdb.conf:ro
+      - ./storage:/var/lib/influxdb
+    ports:
+      - 8086:8086
+    container_name: pragma_influxdb
+    network_mode: "host"
+    

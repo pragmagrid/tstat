@@ -8,24 +8,48 @@
 
 ## Setup
 
+##### Set up the InfluxDB configuration file
+
+> Open /etc/influxdb/influxdb.conf and look for 'http'. Uncomment 'auth-enabled' and change the value from false to true (default is false)
+
 ##### Start InfluxDB on Server
 
 > /etc/rc.d/init.d/influxdb start
 
 ##### Install Grafana on Server
-
+ 
 > Folow the Grafana documentations.(http://docs.grafana.org/installation/rpm/)
-> I installed with wget command. (wget https://dl.grafana.com/oss/release/grafana-5.4.2-1.x86_64.rpm)
+> I installed with wget command. (
+```bash
+wget https://dl.grafana.com/oss/release/grafana-5.4.2-1.x86_64.rpm
+sudo rpm -Uvh <local rpm package>
+```
+
+##### Set up the Grafana configuration file
+
+> Open grafana configuration file /etc/grafana/grafana.ini and look for 'anonymous'. Change the values follow tstat/week_plan/JAN_WK_5th.md. Look for 'auth.basic' and change 'enabled' value false.
 
 ##### Start Grafana on Server
 
 > sudo service grafana-server start
 
-##### Port forwarding on local
+##### Port forwarding on local host
 
 > Run 'ssh -L 3000:localhost:3000 user@host' on local to open grafana browser. It's port forwarding (Host's port number 3000 is forwarded to localhost's 3000). The reason why this command need is written at tstat/week_plan/JAN_WK_4th.md.
- 
+
+##### Type the information in config.py
+
+> Open conf.py and type id, password, dbname and port that is used to connect to influxDB. And type host, path where log files are and file_list_path which is path to store the error log. Finaly, type the line_limit that is limit line number processed at once.
+
 ## Python codes
+
+```bash
+git clone https://github.com/pragmagrid/tstat.git
+cd tstat/src/process
+```
+
+The explanation about form of variable in python codes.
+> Prefer to be specific and meaningful name for variable and functions. If there are more than a word, naming will be word1_word2.
 
 ##### config.py
 
@@ -49,36 +73,33 @@
 
 > Main class which checks directories that start file and end file which are set by input arguments at running and will call process.py for process
 
-##### Naming Schema
-
-> Prefer to be specific and meaningful name for variable and functions. If there are more than a word, naming will be word1_word2.
-
 ## Run
 
-1. Open InfluxDB.conf and look for 'http'. Uncomment 'auth-enabled' and change the value from false to true (default is false)
-> /etc/influxdb/influxdb.conf
-2. Open grafana page in browser and go to 'grafana page > Configuration > Server Admin > Orgs'. Set the organization name.
-3. Open grafana.conf and look for 'anonymous'. Change the values follow tstat/week_plan/JAN_WK_5th.md. Look for 'auth.basic' and change 'enabled' value false.
-> /etc/grafana/grafana.ini
-4. Open conf.py and type id, password, dbname and port that is used to connect to influxDB. And type host, path where log files are and file_list_path which is path to store the error log. Finaly, type the line_limit that is limit line number processed at once.
-6. Run main.py with './tstat_to_influx.py beginning_time end_time'.
-> ./tstat_to_influx.py 2018_12 2019_01
-or
-> ./tstat_to_influx.py 2018_12_30 2019_01_24
-and also the program can be run with YYYY_MM_DD_HH or YYYY_MM_DD_HH_MM.
-If the beginning_time and end_time is empty, then the program will process from the first log file of all to the last log file of all. 
+1. Run main program with in the following way'./tstat_to_influx.py beginning_time end_time'.
+
+   Case 1: run program to process all available log files
+   ```bash
+   ./tstat_to_influx.py
+   ```
+   Case 2: Run program to process log files for year/month range
+   ```bash
+   ./tstat_to_influx.py 2018_12 2019_01
+   ```
+   Case 3: Run program to process log files for year/month/day range
+   ```bash
+   ./tstat_to_influx.py 2018_12_30 2019_01_24
+   ```
+1. progress_<runningtime>.txt will be made whenever you run this program, for example progress_2019-02-19_14:04:59.txt. In progress_runningtime.txt, the line number and error type are written.
 
 ## How to create dashboard on Grafana
 
-> Fisrt of all, there's need to configure the 'Data Sources'. Open the grafana page in browser (localhost:3000) and move the mouse cursor to the gear wheel shape button at the left. Then, the sub menu will be spread out. Click the 'Data Sources' and click the 'Add Data Source' green button. Then, there are some different types. Just click the 'InfluxDB' button. Fill the each part with each proper information.
-> Then, there's ready to create dashboard. Go back Grafana main page and move the mouse cursor to the plus shape button at the left. The sub menu are Dashboard, Folder and Import. Click the 'Dashboard'. And add the pannel whatever the form you want, it's done.
-> The detail description is on Grafana documentation (http://docs.grafana.org/guides/getting_started/)
+ Fisrt of all, there's need to configure the 'Data Sources'. Open the grafana page in browser (localhost:3000) and move the mouse cursor to the gear wheel shape button at the left. Then, the sub menu will be spread out. Click the 'Data Sources' and click the 'Add Data Source' green button. Then, there are some different types. Just click the 'InfluxDB' button. Fill the each part with each proper information.
+ 
+ Then, there's ready to create dashboard. Go back Grafana main page and move the mouse cursor to the plus shape button at the left. The sub menu are Dashboard, Folder and Import. Click the 'Dashboard'. And add the pannel whatever the form you want, it's done.
 
-## log Track
+ The detail description is on Grafana documentation (http://docs.grafana.org/guides/getting_started/)
 
-progress_runningtime.txt will be made whenever you run this program.
 
-In progress_runningtime.txt, the line number and error type are written.
 
 ## Useful Reference
 

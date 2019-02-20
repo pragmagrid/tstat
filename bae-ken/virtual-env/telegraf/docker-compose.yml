@@ -1,0 +1,9 @@
+version: "3.0"
+
+services: 
+  telegraf:
+    image: telegraf:${TELEGRAF_VERSION}
+    volumes:
+      - ./conf/telegraf.conf:/etc/telegraf/telegraf.conf:ro
+    container_name: pragma_telegraf
+    network_mode: "host"

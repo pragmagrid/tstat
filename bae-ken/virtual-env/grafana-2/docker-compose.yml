@@ -1,0 +1,17 @@
+version: "3.0"
+
+services: 
+  grafana:
+    image: grafana/grafana:${GRAFANA_VERSION}
+    volumes:
+      - ./conf/custom.ini:/etc/grafana/grafana.ini
+      # - grafana_volume:/var/lib/grafana
+      - ./storage:/var/lib/grafana
+    ports:
+      - 3001:3001
+    container_name: pragma_grafana_2
+    network_mode: "host"
+    
+
+# volumes:
+  # grafana_volume:

@@ -1,0 +1,15 @@
+version: "3.0"
+
+services: 
+  chronograf:
+    image: chronograf:${CHRONOGRAF_VERSION}
+    volumes:
+      - ./chronograf/storage:/var/lib/chronograf
+    environment:
+      INFLUXDB_URL: http://127.0.0.1:8086
+      KAPACITOR_URL: http://127.0.0.1:9092
+    ports:
+      - 8888:8888
+    container_name: pragama_chronograf
+    network_mode: "host"
+    
