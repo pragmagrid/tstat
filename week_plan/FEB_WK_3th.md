@@ -26,6 +26,6 @@
 
 - [x] Write example the run tstat_to_influx.py command in tstat/src/process/REAMD.md
 
-- [ ] Write how to create dashboard.
+- [x] Write how to create dashboard.
 
 - [ ] Process the exception when program run the curl command through 'os.system' function.

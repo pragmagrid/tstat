@@ -68,6 +68,12 @@ or
 and also the program can be run with YYYY_MM_DD_HH or YYYY_MM_DD_HH_MM.
 If the beginning_time and end_time is empty, then the program will process from the first log file of all to the last log file of all. 
 
+## How to create dashboard on Grafana
+
+> Fisrt of all, there's need to configure the 'Data Sources'. Open the grafana page in browser (localhost:3000) and move the mouse cursor to the gear wheel shape button at the left. Then, the sub menu will be spread out. Click the 'Data Sources' and click the 'Add Data Source' green button. Then, there are some different types. Just click the 'InfluxDB' button. Fill the each part with each proper information.
+> Then, there's ready to create dashboard. Go back Grafana main page and move the mouse cursor to the plus shape button at the left. The sub menu are Dashboard, Folder and Import. Click the 'Dashboard'. And add the pannel whatever the form you want, it's done.
+> The detail description is on Grafana documentation (http://docs.grafana.org/guides/getting_started/)
+
 ## log Track
 
 progress_runningtime.txt will be made whenever you run this program.
