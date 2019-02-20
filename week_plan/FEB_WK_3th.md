@@ -18,9 +18,9 @@
 
 - [x] Change 'classes' to 'python codes' in tstat/src/process/README.md
 
-- [ ] 'Naming Schema' go in 'python codes' in tstat/src/process/README.md
+- [x] 'Naming Schema' go in 'python codes' in tstat/src/process/README.md
 
-- [ ] Write how to install Grafana in setup.
+- [x] Write how to install Grafana in setup.
 
 - [x] Write what user needs to input in config.py in tstat/src/process/README.md
 
@@ -28,9 +28,9 @@
 
 - [x] Write example the run tstat_to_influx.py command in tstat/src/process/REAMD.md
 
-- [ ] Write how to create dashboard (veirfy)
+- [x] Write how to create dashboard (veirfy)
 
-- [ ] Process the exception when program run the curl command through 'os.system' function.
+- [x] Process the exception when program run the curl command through 'os.system' function.
 
 	If the return value of os.system is zero, there's no error in running command. But the other value is returned, it means there's a error.
 

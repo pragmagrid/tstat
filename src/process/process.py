@@ -50,19 +50,23 @@ class run:
                 
                 if self.count == config.CONFIG['line_limit']:
                     #This additional command is for not printing the result of process on console.
-                    run.interact(self, self.curl_insert, db)
+                    run.interact(self, self.curl_insert, db, progress_f)
 
                 line = f.readline()
            
             if self.count > 0:
-                run.interact(self, self.curl_insert, db)
+                run.interact(self, self.curl_insert, db, progress_f)
         f.close()
         progress_f.close()
 
-    def interact(self, curl_str, db):
-        self.total += (self.count/2)
+    def interact(self, curl_str, db, progress_f):
         curl_str += "' >/dev/null 2>&1"
-        db.insert(curl_str)
+        result = db.insert(curl_str)
+        if result is not 0: #When the return value of os.system is 0, it means there's no error in running command.
+            progress_f.write("The insert curl command occurs error! The command is below\n"+curl_str+"\n")
+        else:
+            self.total += (self.count/2)
+
         self.curl_insert = db.insert_query % (config.CONFIG['host'], config.CONFIG['port'], config.CONFIG['dbname'], config.CONFIG['id'], config.CONFIG['password'])
         self.count = 0
 
