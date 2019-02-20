@@ -94,7 +94,9 @@ The explanation about form of variable in python codes.
 ## How to create dashboard on Grafana
 
  Fisrt of all, there's need to configure the 'Data Sources'. Open the grafana page in browser (localhost:3000) and move the mouse cursor to the gear wheel shape button at the left. Then, the sub menu will be spread out. Click the 'Data Sources' and click the 'Add Data Source' green button. Then, there are some different types. Just click the 'InfluxDB' button. Fill the each part with each proper information.
+ 
  Then, there's ready to create dashboard. Go back Grafana main page and move the mouse cursor to the plus shape button at the left. The sub menu are Dashboard, Folder and Import. Click the 'Dashboard'. And add the pannel whatever the form you want, it's done.
+
  The detail description is on Grafana documentation (http://docs.grafana.org/guides/getting_started/)
 
 
