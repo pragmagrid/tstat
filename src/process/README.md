@@ -31,7 +31,6 @@ sudo rpm -Uvh <local rpm package>
 
 ##### Start Grafana on Server
 
-add editing commands for grafana files
 > sudo service grafana-server start
 
 ##### Port forwarding on local host
