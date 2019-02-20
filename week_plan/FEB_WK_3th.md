@@ -28,4 +28,6 @@
 
 - [x] Write how to create dashboard.
 
-- [ ] Process the exception when program run the curl command through 'os.system' function.
+- [x] Process the exception when program run the curl command through 'os.system' function.
+
+	If the return value of os.system is zero, there's no error in running command. But the other value is returned, it means there's a error.
