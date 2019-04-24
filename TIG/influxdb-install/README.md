@@ -3,13 +3,13 @@
 Installation script
 
 ```#!/bin/bash
-curl -O https://raw.githubusercontent.com/kennaruk/centos-grafana-influx-sandbox/master/influxdb-install/influxdb-install.sh
+curl -O https://raw.githubusercontent.com/pragmagrid/tstat/master/TIG/influxdb-install/influxdb-install.sh
 ```
 
 How to use
 
 ```#!/bin/bash
-curl -O https://raw.githubusercontent.com/kennaruk/centos-grafana-influx-sandbox/master/influxdb-install/influxdb-install.sh
+curl -O https://raw.githubusercontent.com/pragmagrid/tstat/master/TIG/influxdb-install/influxdb-install.sh
 chmod +x ./influxdb-install.sh
 ./influxdb-install.sh
 ```
@@ -23,6 +23,6 @@ Without configuration
 With custom configuration
 
 ```#!/bin/bash
-curl -O https://raw.githubusercontent.com/kennaruk/centos-grafana-influx-sandbox/master/influxdb-install/influxdb.config.example
+curl -O https://raw.githubusercontent.com/pragmagrid/tstat/master/TIG/influxdb-install/influxdb.config.example
 ./influxdb-install.sh influxdb.config.example
 ```
