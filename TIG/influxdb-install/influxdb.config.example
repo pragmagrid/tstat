@@ -1,7 +1,7 @@
 # USE "#" TO COMMENT 
 
 DB_USER=pragma_admin
-DB_PORT=8068
+DB_PORT=8086
 
 DB_PASSWORD=database_password
 
