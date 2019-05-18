@@ -1,3 +1,5 @@
+#### Grafana admin user
+
 Upon install, grafana has default settings:
 ```txt
 user: admin
@@ -22,3 +24,35 @@ sqlite> .exit
 The above command in sqilte resets the password to a default admin (with a default salt).
 Login as admin/admin at the web interface and follow instructionson the screen to  update  and reset a password
 to a new one.
+
+#### Dashboard Settings
+
+For each dashboard need to set variables.  The setings for dashboard are located on the top right hand bar
+
+![test_grafana](dashboard-settings.png)
+
+Click on settings and then choose `Variables` from the menu
+
+1. Dashboard `Tstat by port`
+
+   There are 2 variables: service and port.
+
+   Variable `service` configuration
+
+   ![TSTAT by port](byport-var-service.png)
+
+   Variable `port` configuration
+
+   ![TSTAT by port port ](byport-var-port.png)
+
+2. Dashboard `Tstat by host`
+
+   There are 2 variables: service and host.
+
+   Variable `service` configuration
+
+   ![TSTAT by host](byhost-var-service.png)
+
+   Variable `host` configuration
+
+   ![TSTAT by host port ](byhost-var-host.png)
