@@ -1,5 +1,5 @@
-INFLUX_URL="http:\/\/pc-173.calit2.optiputer.net:8086"
-INFLUX_USER="pragma_admin"
-INFLUX_PASSWORD="3dt4sWq"
-TELEGRAF_INTERVAL="5s"
-TELEGRAF_INPUTS="cpu:mem:net:swap:disk:diskio:netstat:system"
+INFLUX_URL=http:\/\/pc-173.calit2.optiputer.net:8086
+INFLUX_USER=pragma_admin
+INFLUX_PASSWORD=3dt4sWq
+TELEGRAF_INTERVAL=5s
+TELEGRAF_INPUTS=cpu:mem:net:swap:disk:diskio:netstat:system
