@@ -1,8 +1,7 @@
 # USE "#" TO COMMENT 
 
-DB_USER=pragma_admin
 DB_PORT=8086
-
+DB_USER=pragma_admin
 DB_PASSWORD=database_password
 
 # DB_CONF_DIR=/etc/influxdb
