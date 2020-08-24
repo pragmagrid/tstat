@@ -1,5 +1,0 @@
-.env
-influxdb/storage
-chronograf/storage
-kapacitor/storage
-grafana/storage
